@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Economics | My Octopress Blog]]></title>
+  <link href="http://royrusso.github.io/blog/categories/economics/atom.xml" rel="self"/>
+  <link href="http://royrusso.github.io/"/>
+  <updated>2014-04-11T14:08:39-04:00</updated>
+  <id>http://royrusso.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mapping ISO Country Codes Alpha-2 to Alpha3]]></title>
+    <link href="http://royrusso.github.io/blog/2011/03/17/mapping-iso-country-codes-alpha-2-to-alpha3/"/>
+    <updated>2011-03-17T15:26:28-04:00</updated>
+    <id>http://royrusso.github.io/blog/2011/03/17/mapping-iso-country-codes-alpha-2-to-alpha3</id>
+    <content type="html"><![CDATA[<p>A recent experiment with IMF, CIA, and World Bank datasets had me fighting to map ISO 3166 Alpha-3 codes to ISO 3166 Alpha-2 codes. The reason I had to perform the mappings, is because most downloaded flag icon libs on the web are based on Alpha-2 codes.</p>
+
+<p>I have managed to map 183 countries in my local database, and am making the clean CSV available for download <a href="http://www.royrusso.com/wp-content/uploads/2011/03/iso.csv">here</a>.</p>
+
+<p>The format is:</p>
+
+<pre><code>ISO ALPHA-2 Code , ISO ALPHA-3 Code
+AF,AFG
+AX,ALA
+AL,ALB
+DZ,DZA
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[OT: Calculating GDP Growth]]></title>
+    <link href="http://royrusso.github.io/blog/2011/03/10/ot-calculating-gdp-growth/"/>
+    <updated>2011-03-10T11:18:59-05:00</updated>
+    <id>http://royrusso.github.io/blog/2011/03/10/ot-calculating-gdp-growth</id>
+    <content type="html"><![CDATA[<p>As I work on a new site, I hit a bit of a wall when trying to calculate GDP Growth Rate, given Quarterly GDP figures (in Billions $). I had a very hard time trying to find this through the almighty Google, and a lot of the formulas on the web, are either wrong or simply cover how GDP is calculated, which is not what I needed:</p>
+
+<blockquote><p>Y = C + I + E + G, where
+Y = GDP
+C = Consumer Spending
+I = Investment made by industry
+E = Excess of Exports over Imports
+G = Government Spending</p></blockquote>
+
+<p>So dusting off some old Economics books, the formula for calculating Annual GDP growth over two periods (usually measured in Quarters) is:</p>
+
+<blockquote><p>(((x(t)/x(t-1)) ^ (number_of_observations_per_year)) &ndash; 1) * 100</p></blockquote>
+
+<p>Where:</p>
+
+<blockquote><ul>
+<li><p>&lsquo;x(t)&rsquo; is the value of GDP x at time period t.</p></li>
+<li><p>&lsquo;x(t-1)&rsquo; is the value of GDP x at time period t-1, or the previous Quarter.</p></li>
+<li><p>&lsquo;^&rsquo; means, to the power of.</p></li>
+<li><p>&lsquo;number_of_observations_per_year&rsquo; in this case would be 4.</p></li>
+</ul>
+</blockquote>
+
+<p>So given values (in Billions $) for Q3 and Q4 2010, we have:</p>
+
+<p>(((13370.10 / 13278.50)^ 4) -1 )* 100 = 2.8%</p>
+
+<p>Now hopefully Google will lead the other 3 people in the world that are looking for this formula here. ;&ndash;)</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Cache Control With Tomcat-JBoss - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="I was recently looking for a Cache Control Filter for a Tomcat instance in an effort to speed-up one of my sites serving content. Remembering that I &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://royrusso.github.io/blog/2011/02/22/cache-control-with-tomcat-jboss">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Cache Control With Tomcat-JBoss</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-22T11:47:09-05:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I was recently looking for a Cache Control Filter for a Tomcat instance in an effort to speed-up one of my sites serving content. Remembering that I once lifted <a href="http://docs.jboss.org/jbossas/javadoc/4.0.2/org/jboss/web/tomcat/filters/ReplyHeaderFilter.java.html">sample</a> code written by Scott Stark at JBoss. Looking through my libs, I did find his original code with some adjustments I had made for including <em>Expires</em> tag for cross-browser compatibility in caching content for a certain amount of time. I figured I would post a copy, for any of you wanting to add header variables to Tomcat content output.</p>
+
+<p><strong>Note:</strong> I normally create two copies of this filter. One for text content like HTML, CSS, and JS files, and another for image content like GIF, JPG, PNG. The reason is because you may want images to be cached for a longer period of time in the user&rsquo;s browser, as they don&rsquo;t change as often as markup and code, and you don&rsquo;t want to hack at your filter code to determine what type of content it is you&rsquo;re serving. My $.02.</p>
+
+<p><strong>UPDATE:</strong> It has come to my attention that Tomcat 7 bundles a cache filter you can find <a href="http://tomcat.apache.org/tomcat-7.0-doc/config/filter.html#Expires_Filter">here</a>. <strong>More importantly, there is a standalone cache-filter on google code that is actively maintained, <a href="http://code.google.com/p/xebia-france/">here</a>.</strong></p>
+
+<!-- more -->
+
+
+<h3>Filter code:</h3>
+
+<pre><code>package com.foo.filter;
+
+import org.apache.log4j.Logger;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Enumeration;
+
+   /**
+    * A servlet filter that simply adds all header specified in its config to replies the filter is mapped to. An
+    * example would be to set the cache control max age:
+    * &lt;p&gt;&lt;/p&gt;
+    * &lt;filter&gt; &lt;filter-name&gt;CacheControlFilter&lt;/filter-name&gt; &lt;filter-class&gt;filter.ReplyHeaderFilter&lt;/filter-class&gt;
+    * &lt;init-param&gt; &lt;param-name&gt;Cache-Control&lt;/param-name&gt; &lt;param-value&gt;max-age=3600&lt;/param-value&gt; &lt;/init-param&gt;
+    * &lt;/filter&gt;
+    * &lt;p&gt;&lt;/p&gt;
+    * &lt;filter-mapping&gt; &lt;filter-name&gt;CacheControlFilter&lt;/filter-name&gt; &lt;url-pattern&gt;/images/*&lt;/url-pattern&gt;
+    * &lt;/filter-mapping&gt; &lt;filter-mapping&gt; &lt;filter-name&gt;CacheControlFilter&lt;/filter-name&gt; &lt;url-pattern&gt;*.js&lt;/url-pattern&gt;
+    * &lt;/filter-mapping&gt;
+    *
+    * @author Scott.Stark@jboss.org
+    * @version $Revison:$
+    */
+public class ReplyHeaderFilter implements Filter
+{
+   static Logger log = Logger.getLogger(ReplyHeaderFilter.class);
+   private String[][] replyHeaders = ;
+
+   public void init(FilterConfig config)
+   {
+      Enumeration names = config.getInitParameterNames();
+      ArrayList tmp = new ArrayList();
+      while (names.hasMoreElements())
+      {
+         String name = (String)names.nextElement();
+         String value = config.getInitParameter(name);
+         log.debug("Adding header name: " + name + "='" + value + "'");
+         String[] pair = {name, value};
+         tmp.add(pair);
+      }
+      replyHeaders = new String[tmp.size()][2];
+      tmp.toArray(replyHeaders);
+   }
+
+   public void doFilter(ServletRequest request, ServletResponse response,
+                        FilterChain chain)
+      throws IOException, ServletException
+   {
+      // Apply the headers
+      HttpServletResponse httpResponse = (HttpServletResponse)response;
+      for (int n = 0; n &lt; replyHeaders.length; n++)
+      {
+         String name = replyHeaders[n][0];
+         String value = replyHeaders[n][1];
+         httpResponse.setHeader(name, value);
+      }
+
+      long relExpiresInMillis = System.currentTimeMillis() + (1000 * 259200);
+      httpResponse.setHeader("Expires", getGMTTimeString(relExpiresInMillis));
+      chain.doFilter(request, response);
+   }
+
+   public static String getGMTTimeString(long milliSeconds)
+   {
+      SimpleDateFormat sdf = new SimpleDateFormat("E, d MMM yyyy HH:mm:ss 'GMT'");
+      return sdf.format(new Date(milliSeconds));
+   }
+
+   public void destroy()
+   {
+   }
+}
+</code></pre>
+
+<h3>Web.XML config:</h3>
+
+<pre><code>    &lt;filter&gt;
+        &lt;description&gt;Adds cacheing to content output files.&lt;/description&gt;
+        &lt;filter-name&gt;CacheControlFilter&lt;/filter-name&gt;
+        &lt;filter-class&gt;com.foo.filter.ReplyHeaderFilter&lt;/filter-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;Cache-Control&lt;/param-name&gt;
+            &lt;param-value&gt;public,max-age=86400&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;Pragma&lt;/param-name&gt;
+            &lt;param-value&gt;public&lt;/param-value&gt;
+        &lt;/init-param&gt;
+    &lt;/filter&gt;
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;CacheControlFilter&lt;/filter-name&gt;
+        &lt;url-pattern&gt;*.js&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;CacheControlFilter&lt;/filter-name&gt;
+        &lt;url-pattern&gt;*.css&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+</code></pre>
+
+<ol>
+<li><p> You can add/adjust the url-pattern to whatever you like, even image extensions and html/JSP extensions.</p></li>
+<li><p> You can add other header variables here as you desire.</p></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">royrusso</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-22T11:47:09-05:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>Java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://royrusso.github.io/blog/2011/02/22/cache-control-with-tomcat-jboss/" data-via="" data-counturl="http://royrusso.github.io/blog/2011/02/22/cache-control-with-tomcat-jboss/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/02/22/saas-multi-tenant-mysql5-one-schema/" title="Previous Post: SaaS Multi-Tenant MySQL5 - One Schema">&laquo; SaaS Multi-Tenant MySQL5 - One Schema</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/02/23/new-nano-10g-saltwater-tank/" title="Next Post: New Nano 10g Saltwater Tank">New Nano 10g Saltwater Tank &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:royrusso.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/03/12/debug-maven-test-goal-with-intellij-idea/">Debug Maven Test Goal With Intellij IDEA</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/15/elastichq-elasticsearch-monitoring-management/">ElasticHQ - ElasticSearch Monitoring & Management</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/23/how-to-extension-less-urls-using-php-in-apache-2-x/">How-To: Extension-less URLs Using PHP in Apache 2.x</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/05/jwatch-a-quartz-monitor/">JWatch - a Quartz Monitor</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/04/19/terracotta-quartz-relational-model/">Terracotta Quartz Relational Model</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

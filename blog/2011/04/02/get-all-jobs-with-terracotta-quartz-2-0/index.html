@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Get All Jobs With Terracotta Quartz 2.0+ - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="The most recent Terracotta Quartz release seems to have changed some of the API methods to list scheduled jobs. Although minor changes, I thought I& &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://royrusso.github.io/blog/2011/04/02/get-all-jobs-with-terracotta-quartz-2-0">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Get All Jobs With Terracotta Quartz 2.0+</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-02T09:11:13-04:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>The most recent <a href="http://www.quartz-scheduler.org/">Terracotta Quartz</a> release seems to have changed some of the API methods to list scheduled jobs. Although minor changes, I thought I&rsquo;d post sample code here for anyone trying the same thing as I, and hitting a wall with the API differences. Some of the changes are <a href="http://www.quartz-scheduler.org/docs/2.0/newInQuartz2.html">documented here</a> in the latest release, but it&rsquo;s OSS, so expect the docs to suck. ;&ndash;)</p>
+
+<p>The changes, as best I can tell (<em>correct me if I&rsquo;m wrong</em>), revolve around accessing the Scheduler object.You can see the differences between the <a href="http://www.quartz-scheduler.org/docs/api/1.8.1/index.html">1.8 API</a> and the <a href="http://www.quartz-scheduler.org/docs/api/2.0.0/index.html">2.0 API</a>.</p>
+
+<p>Changes I found:</p>
+
+<ul>
+<li><p><strong>scheduler.getJobGroupNames()</strong> now returns a List<String> , and not a String[].</p></li>
+<li><p><strong>scheduler.getJobNames(groupName);</strong> has dissapeared.</p></li>
+<li><p>You must now use <strong>scheduler.getJobKeys(GroupMatcher.groupEquals(name));</strong> to get a Set<JobKey>, which will be used to call <strong>scheduler.getJobDetail((JobKey)iter.next());</strong></p></li>
+</ul>
+
+
+<h3>Sample Code</h3>
+
+<pre><code>      try
+      { 
+         Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+         List jobGroups = scheduler.getJobGroupNames();
+         for (int i = 0; i &lt; jobGroups.size(); i++)
+         {
+            String name = (String) jobGroups.get(i);
+            Set keys = scheduler.getJobKeys(GroupMatcher.groupEquals(name));
+            Iterator iter = keys.iterator();
+            while (iter.hasNext())
+            {
+               JobDetail jobDetail = scheduler.getJobDetail((JobKey)iter.next());
+               JobDataMap jobDataMap = jobDetail.getJobDataMap();
+               // do something
+            }
+         }
+      }
+      catch (SchedulerException se)
+      {
+         se.printStackTrace();
+      }
+</code></pre>
+
+<p>I specially like the addition of <strong>scheduler.getJobKeys(GroupMatcher.groupEquals(name));</strong>, where <a href="http://www.quartz-scheduler.org/docs/api/2.0.0/org/quartz/impl/matchers/GroupMatcher.html">GroupMatcher</a> can take some crude expressions like <strong>groupContains(String compareTo)</strong> and <strong>groupStartsWith(String compareTo)</strong>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">royrusso</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-02T09:11:13-04:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/open-source-software/'>Open Source Software</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://royrusso.github.io/blog/2011/04/02/get-all-jobs-with-terracotta-quartz-2-0/" data-via="" data-counturl="http://royrusso.github.io/blog/2011/04/02/get-all-jobs-with-terracotta-quartz-2-0/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/03/17/mapping-iso-country-codes-alpha-2-to-alpha3/" title="Previous Post: Mapping ISO Country Codes Alpha-2 to Alpha3">&laquo; Mapping ISO Country Codes Alpha-2 to Alpha3</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/19/terracotta-quartz-relational-model/" title="Next Post: Terracotta Quartz Relational Model">Terracotta Quartz Relational Model &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:royrusso.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/03/12/debug-maven-test-goal-with-intellij-idea/">Debug Maven Test Goal With Intellij IDEA</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/15/elastichq-elasticsearch-monitoring-management/">ElasticHQ - ElasticSearch Monitoring & Management</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/23/how-to-extension-less-urls-using-php-in-apache-2-x/">How-To: Extension-less URLs Using PHP in Apache 2.x</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/05/jwatch-a-quartz-monitor/">JWatch - a Quartz Monitor</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/04/19/terracotta-quartz-relational-model/">Terracotta Quartz Relational Model</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,575 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="I was recently looking for a Cache Control Filter for a Tomcat instance in an effort to speed-up one of my sites serving content. Remembering that I &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://royrusso.github.io/blog/page/2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/02/22/cache-control-with-tomcat-jboss/">Cache Control With Tomcat-JBoss</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-22T11:47:09-05:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I was recently looking for a Cache Control Filter for a Tomcat instance in an effort to speed-up one of my sites serving content. Remembering that I once lifted <a href="http://docs.jboss.org/jbossas/javadoc/4.0.2/org/jboss/web/tomcat/filters/ReplyHeaderFilter.java.html">sample</a> code written by Scott Stark at JBoss. Looking through my libs, I did find his original code with some adjustments I had made for including <em>Expires</em> tag for cross-browser compatibility in caching content for a certain amount of time. I figured I would post a copy, for any of you wanting to add header variables to Tomcat content output.</p>
+
+<p><strong>Note:</strong> I normally create two copies of this filter. One for text content like HTML, CSS, and JS files, and another for image content like GIF, JPG, PNG. The reason is because you may want images to be cached for a longer period of time in the user&rsquo;s browser, as they don&rsquo;t change as often as markup and code, and you don&rsquo;t want to hack at your filter code to determine what type of content it is you&rsquo;re serving. My $.02.</p>
+
+<p><strong>UPDATE:</strong> It has come to my attention that Tomcat 7 bundles a cache filter you can find <a href="http://tomcat.apache.org/tomcat-7.0-doc/config/filter.html#Expires_Filter">here</a>. <strong>More importantly, there is a standalone cache-filter on google code that is actively maintained, <a href="http://code.google.com/p/xebia-france/">here</a>.</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/02/22/cache-control-with-tomcat-jboss/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/02/22/saas-multi-tenant-mysql5-one-schema/">SaaS Multi-Tenant MySQL5 - One Schema</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-22T10:16:26-05:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Over the past 10 years I&rsquo;ve spent working with multi-tenant software architecture, I&rsquo;ve seen a lot of clever ideas and collosal mistakes made in designing systems for fault-tolerance and scalability. I decided it was time to note some of the best/worst practices here regarding the deployment of SaaS multi-tenant MySQL database designs, as food-for-thought to others designing a system from the ground-up.</p>
+
+<p>Inevitably one of the initial crossroads a design team will reach is whether to design a system using one global schema or many schema. To put it simply, you are deciding on whether you want every customer&rsquo;s data in on MySQL schema or you will have one-schema-per-customer within a MySQL instance. This is not a trivial design question, as getting this &ldquo;right&rdquo; in the beginning will cost you less headaches in the end. I&rsquo;ll assume you aren&rsquo;t designing in a vaccuum, and have a good idea of what the business side of your company would like to achieve with the software you&rsquo;re deploying, ie. customer numbers, size of user-base, transactions per month, etc&hellip;</p>
+
+<p>To make this simple, I&rsquo;ve broken down some of the pros and cons of designing a multi-tenant database architecture with MySQL using <strong>one schema</strong>&hellip;</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/02/22/saas-multi-tenant-mysql5-one-schema/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/09/18/i-build-a-pond/">I Build a Pond</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-18T04:43:00-04:00" pubdate data-updated="true">Sep 18<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Those that know me personally, know my love for fish. It is likely amplified by the fact that I was born and raised in Miami, yet now find myself land-locked in Atlanta with the nearest ocean a 5-hour drive away. I have several fresh-water aquariums (Asian 30g planted tank pictured here)  in-house,  but this late-summer I decided to take my love for fish outdoors, by building a pond (in a rather muddy and useless part of my backyard).</p>
+
+<p><a href="http://2.bp.blogspot.com/_o-_Iw9XoQXU/SrOPCA3gI4I/AAAAAAAAAAM/xb6e3_F9O94/s1600-h/DSC03739.JPG"><img src="http://2.bp.blogspot.com/_o-_Iw9XoQXU/SrOPCA3gI4I/AAAAAAAAAAM/xb6e3_F9O94/s320/DSC03739.JPG" alt="" /></a></p>
+
+<p>The goal was to build a pond on a strict budget (I&rsquo;m cheap!), thus requiring me to build most of it by hand, using the least amount of store-bought parts as possible. So I started digging&hellip;</p>
+
+<p>&hellip; and I didn&rsquo;t stop until the hole was 3ft at its deepest point, with several shelves sculpted along the edges at varying depths. Georgia clay is not Miami sand. Digging this 1500gallon hole took me 2 full weekends or 4 days of non-stop pick and shovel work, but once it was complete, it was time to place the under-liner. I found some Uhaul padding cloths that would work nicely, from the garage&hellip;</p>
+
+<p><a href="http://2.bp.blogspot.com/_o-_Iw9XoQXU/SrORqCJUl3I/AAAAAAAAAAc/KHOiBfkQpW8/s1600-h/DSC03675.JPG"><img src="http://2.bp.blogspot.com/_o-_Iw9XoQXU/SrORqCJUl3I/AAAAAAAAAAc/KHOiBfkQpW8/s320/DSC03675.JPG" alt="" /></a>
+I didn&rsquo;t skimp on the liner itself and bought 45epdm liner at the <a href="http://www.atlantawatergardens.com/">Atlanta Water Garden store</a> ($270!) along with a 1800g/hr submersible pump ($150). I looked at the liners available at Lowes/HDepot, and didn&rsquo;t want the low quality/price, because one hole in a liner would be a mess to fix. Once the liner was in place, the real work/engineering started on the filter. I wasn&rsquo;t going to spend a minimum of $300 an a filter and another $300 on a skimmer, so I went the homemade bio-filter route. Using the <a href="http://www.skippysstuff.com/minime.htm">Skippy site</a> and this <a href="http://leisure.prior-it.co.uk/build-diy-pond-bio-filter.shtml">crazy british guy&rsquo;s site</a> as a guide, I built my own filter using a plain-old rubbermaid tank, pvc tubing, pvc valves, lava rock, and scotch-brite-like scrubbie pads (Dollar-store &ndash; $10). The lava-rock and scrubbies are used as a &ldquo;house&rdquo; for all that beneficial bacteria that will live there and eat-up all the junk that algae likes to feed on.</p>
+
+<p><a href="http://2.bp.blogspot.com/_o-_Iw9XoQXU/SrOYeuIacbI/AAAAAAAAAA0/Mg8l-hT6uPg/s1600-h/Picture+014.jpg"><img src="http://2.bp.blogspot.com/_o-_Iw9XoQXU/SrOYeuIacbI/AAAAAAAAAA0/Mg8l-hT6uPg/s320/Picture+014.jpg" alt="" /></a>
+I also added several plants, like Anachris, Water Lettuce, two-leaf and four-leaf water clover. The plants will also compete with the algae and provide oxygen to the fish, so they&rsquo;re not gasping for air. Within a few months, I should have crystal-clear water. Total cost for the filter was $50. Plants ran about $20.</p>
+
+<p><a href="http://3.bp.blogspot.com/_o-_Iw9XoQXU/SrOUhaAwlwI/AAAAAAAAAAk/FHkbCWNtPTA/s1600-h/Picture+012.jpg"><img src="http://3.bp.blogspot.com/_o-_Iw9XoQXU/SrOUhaAwlwI/AAAAAAAAAAk/FHkbCWNtPTA/s320/Picture+012.jpg" alt="" /></a>Once the pond was filled, I bought some cheap-o fish&hellip; 20 minnows and 20 goldfish &ndash; total cost $7. Most people use these as feeders, and I wasn&rsquo;t about to spend $200 on a koi!</p>
+
+<p>I&rsquo;ve done some work on the tubing since I filled the pond, painting all visible parts black with spray paint and burying most of the water-routing. I also got a great deal on stone-work for the edging from Lowes.</p>
+
+<p><a href="http://1.bp.blogspot.com/_o-_Iw9XoQXU/SrOVt_h4xkI/AAAAAAAAAAs/Fkqvv6MlwxQ/s1600-h/DSC03735.JPG"><img src="http://1.bp.blogspot.com/_o-_Iw9XoQXU/SrOVt_h4xkI/AAAAAAAAAAs/Fkqvv6MlwxQ/s320/DSC03735.JPG" alt="" /></a>
+Although the original design called for the shape to be of a kidney-bean, somehow when I started digging it turned in to an oval. ;&ndash;) Luckily the shape works well with the location of the waterfall and pump, helping circulate water around the planted plants, so there aren&rsquo;t any dead spots for algae to take hold and junk to collect.</p>
+
+<p>Things left to do&hellip;</p>
+
+<ul>
+<li><p>Landscaping the area around the pond and create a viewing/sitting area.</p></li>
+<li><p>Purchase a palette of slate for the waterfall. It is currently using rocks I found during the Big Dig.</p></li>
+</ul>
+
+
+<p>As expected, there was an algae bloom within a week of the pond being filled. It&rsquo;s starting to subside now as the bacteria and plants take hold. I&rsquo;ll post pictures next month and hopefully, I&rsquo;m not staring at pea-soup. ;&ndash;)</p>
+
+<p>The only design flaw thus far, I didn&rsquo;t account for, was water overflow. It&rsquo;s been raining a lot here lately, forcing me to open the drainage valve under the filter manually to drain the pond. If the water breaches the walls (think New Orleans levies), things can get ugly really fast, so building some automated overflow in the system will likely be a winter task.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/04/16/open-source-meets-demand-generation/">Open Source Meets Demand Generation</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-04-16T15:11:00-04:00" pubdate data-updated="true">Apr 16<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>(UPDATE: If you have no clue what Demand Generation is, take a look at my <a href="http://www.loopfuse.com/article_laymen_dg_process.php">Layman&rsquo;s guide</a>)</p>
+
+<p>Applying open source business models and development methodologies to middleware have seen increasing popularity in recent years. Needless to say, the model has worked with notable companies such as JBoss, Red Hat, Pentaho, Hyperic, and others. Of course, it takes more than just an open source business model to stay in business. These companies all needed sales to close deals, and in turn, sales needed marketing to provide qualified leads. One thing all of these companies have in common is efficient marketing and sales teams, powered by Demand Generation Technology. The use of demand generation, allowed these companies to scale quickly by providing increased ROI in marketing and increased efficiency in sales, via automation of the lead qualification and nurturing process. In essence, sales personnel aren&rsquo;t wasting their time on cold leads, and marketing isn&rsquo;t wasting time trying to corral leads that &ldquo;leak&rdquo; out of the sales funnel.</p>
+
+<p>I recently wrote an article that mentions why Open Source Companies are uniquely positioned for maximizing demand generation technologies. You can see the article <a href="http://www.loopfuse.com/article_are_you_oss.php">here</a>. In essence, these companies have been able to identify and &ldquo;upsell&rdquo; their community in to their support, training, and consulting services. The unique position of OSS companies relying heavily on their community, makes demand generation a high-value proposition for them, and a near-necessity to any OSS company wishing to tap in to its user-base.</p>
+
+<p>If you don&rsquo;t believe or don&rsquo;t know of the power of automating your marketing and sales efforts through demand generation, simply look around at the successful batch of open source companies, and you&rsquo;ll see them using it, or on the brink of implementing it. Proof enough? ;&ndash;)</p>
+
+<p>Open Source demand generation for Everyone</p>
+
+<p><a href="http://www.loopfuse.com/">LoopFuse</a>, is an open source company, founded by myself and Tom Elrod. After working for years at JBoss and with close to a decade of email marketing experience under our belt, we saw first-hand what demand generation could do when applied to an OSS business. Oddly enough, when we looked across the landscape, all we saw were a hand-full of proprietary players, that we felt were charging way too much for the value they were providing. Applying what we have learned over the years with regards to increasing marketing and sales efficiency, open source business models, and enterprise-class software development, we were certain we could be a disruptive force in this market, innovating faster, providing a complete services offering, and helping expand the market, so &ldquo;the masses&rdquo; could benefit from this critical technology that is increasingly becoming a necessity to those wanting to grow their businesses. Additionally, leveraging an open source business model allows us to innovate at a faster-pace than our proprietary competitors and keep our costs low &ndash; passing on those savings to our customers.</p>
+
+<p>With that being said, we have recently released our first version of &ldquo;<a href="http://www.loopfuse.com/products.php">One View</a>&rdquo;, our <a href="http://www.loopfuse.com/os.php">OSS demand generation</a> solution. It is distributed under the GPL, complemented by an <a href="http://www.loopfuse.com/enterprise.php">Enterprise Edition</a> that is part of our ASP, or SaaS, offering.</p>
+
+<p>Additionally, we will be launching even more enterprise-level features in our second version, due in May 22 (Yes, we move fast). Just in time, for <a href="http://www.osbc.com/">OSBC</a>, where we will have a shiny booth and you can watch me yap away during our presentation, about how implementing <strong>LoopFuse&rsquo;s</strong> demand generation solution is painless, and frankly, a no-brainer. ;&ndash;)</p>
+
+<p>Regards,</p>
+
+<p>Roy Russo</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/02/14/marc-fleury-jboss-and-entrepreneurship/">Marc Fleury, JBoss, and Entrepreneurship</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-02-14T08:03:00-05:00" pubdate data-updated="true">Feb 14<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>How much should an entrepreneur make once his company is sold? What percentage of equity is &ldquo;fair&rdquo; for founders to hold on to? Personally, I despise the word &ldquo;fair&rdquo;, because it always leads to some bed-wetting liberal socialist ideal of what they deem to be &ldquo;right&rdquo; and &ldquo;just&rdquo;. Why I ask these questions, is due to the meandering and degraded <a href="http://www.theserverside.com/news/thread.tss?thread_id=44211">thread on TSS, regarding Marc Fleury leaving Red Hat</a>, and what was a &ldquo;fair&rdquo; amount of equity he and his family should&rsquo;ve kept.</p>
+
+<p>Anyone that has ever tried to start/build/market his own startup, fully realizes how much risk, sleepless nights, knots-in-stomach, overwhelming stress, etc&hellip; are associated with such an endeavor. A founder absorbs 100% of the risk in the early stages, often going without pay, insurance for himself and family, and simply living life trying to fulfill a dream. This is why most of us stick to working for &ldquo;the man&rdquo; where a paycheck and benefits are assured, because we simply don&rsquo;t have the stomach for it. Its that point, that many of the incessant little whiners on TSS seem to overlook, or simply have never experienced. Whether Marc Fleury walked away with two dollars or a hundred million dollars, is not my problem. At the end of the day, what matters, is what <em>I</em> got out of JBoss, because at the end of the day, its all about me. ;&ndash;)</p>
+
+<p>Clearly, the whiners on TSS feel the same way. Don&rsquo;t let them fool you with their march against &ldquo;the evil corporate greed monster&rdquo;. No, many of these guys are angry, because they weren&rsquo;t part of the equity-event &ndash; or didn&rsquo;t receive their &ldquo;fair share&rdquo; (waah!). In fact, most of these clowns decided long ago to leave JBoss and launch a competing product, even while wearing their red floppy shoes. As Bill Burke put it, it was a coupe. Would you reward half a dozen employees of yours that decided to fork off and launch a competing product? Specially, during the most critical times of a startup? I don&rsquo;t know about you, but I would move to crush them like little grapes.</p>
+
+<p>So that leads me to what everyone &ldquo;got&rdquo; out of JBoss, ignoring for a minute the peanut gallery throwing their boogers at Marc. Many of us didn&rsquo;t make enough to retire &ndash; clearly, most of us are still working. What JBoss did for the industry was prove that OSS was able to compete toe-to-toe with commercial vendors, and further proved that the business model was viable. So what do we have now? Alfresco, Mule, Sugar, and others, all emulating (in some form or fashion) the JBoss model. What does that mean for you? More jobs, more growth, more success, and hell&hellip; maybe even turning your own OSS project in to something that makes money! In this respect, the whiners should be thanking Marc for putting OSS on the map, as it will, in turn, benefit their own projects (These guys are a bit too shortsighted to see that, however).</p>
+
+<p>For me, there is something more important than immediate cash benefits. There are also intangible benefits to the entire JBoss story for those working here. JBoss projects were, and still are, mostly controlled by their project leads. For our own Portal project, we didn&rsquo;t just sit around coding all day like a bunch of cube-farm coders (I&rsquo;d kill myself) taking orders from some clueless architect. No, among other things, we were responsible for marketing, evangelizing, answering support cases, delivering and writing the training materials and certification exams, interfacing with customers/partners/analysts, etc&hellip; Essentially, we are a business within a business. This is not only empowering to the project developers but it also exposed them to areas outside of &ldquo;the code&rdquo;. From my point of view, in my 2+ years here, I&rsquo;ve learned the marketing/sales side of the software business better than any MBA could hope to, from some windbag professor. (Some studies show that getting an MBA makes your dumber, but anyway&hellip;)</p>
+
+<p>So what was my net benefit working at JBoss? Not only did I put a little cash in my pocket, but more importantly, Fleury taught us all how to run a successful software business. You can let that bake your noodle all you want, but I don&rsquo;t think <em>anyone</em> can put a price tag on that sort of experience. When I could&rsquo;ve sat in a cube and worked at some bottomless pit of a corporation, I chose rather to work at JBoss, and I am much wiser for it. So not for the immediate cash, but for my future career potential, do I thank Marc for working things the way he did. What <em>I</em> learned here at JBoss, no one can ever take from me and likely will have a severe positive impact on my future income potential. However, another tenth of a percentage point of equity, would&rsquo;ve just meant nicer rims on my car. Which would you choose?</p>
+
+<p>STAY METAL!
+Roy Russo</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/01/17/badgeware-and-open-source-again/">Badgeware and Open Source&#8230; Again</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-01-17T07:13:00-05:00" pubdate data-updated="true">Jan 17<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So the debate continues&hellip; First, Matt Asay dives in on <a href="http://weblog.infoworld.com/openresource/archives/2007/01/roy_russo_on_op.html">his blog</a>, and now my good friend and former colleague, Andy Oliver, has decided to reply to my blog post on what <a href="http://royrusso.blogspot.com/2007/01/badgeware-and-open-source.html">I see wrong </a>with OSI&rsquo;s stance on badgeware licensing. You can view his post in its entirety <a href="http://blog.buni.org/blog/acoliver/opensource/2007/01/15/Roy-Russo-wrong-on-so-called-badgeware">here</a>. To add fuel to the fire, there&rsquo;s an <a href="http://www.theserverside.com/news/thread.tss?thread_id=43851">interesting thread on TSS</a>, regarding MuleSource that has degenerated in to a licensing discussion, and now Matt Asay has <a href="http://asay.blogspot.com/2007/01/and-so-community-rips-itself-apartagain.html">given his opinion</a> on that.  This goes to show exactly how passionate the open source community is, when defending/defining &ldquo;open source&rdquo;.</p>
+
+<p><strong>On Andy&rsquo;s Blog&hellip;</strong>
+I have only the most respect for Andy, having worked with him in the past, and his being a critical member of the early days of JBoss, but&hellip; he&rsquo;s just plain wrong. My telling Andy he&rsquo;s wrong is nothing new, but this time, he&rsquo;s just REALLY wrong. So wrong, in fact, this post is purely dedicated to his twisted view of &ldquo;open source&rdquo; and OSI&rsquo;s stance on badgeware. ;&ndash;)</p>
+
+<p>Andy tries to make a point that if most/all libraries used by JBoss required attribution, JBoss would have been unsuccessful as a company. He contends that the sheer amount of screen real-estate would&rsquo;ve crippled any application built on JBoss.</p>
+
+<blockquote><p>If this licensing scheme had taken off in the early days
+then, depending on the most prevalent terms regarding UI persistence, I think
+JBoss would have been inviable as a company and Alfresco would have never been a
+customer. In fact, forget the amount of screen real estate. Some &ldquo;exhibit B&rdquo;
+licenses are requesting SPECIFIC screen real estate. If that happened then it
+would have been inviable to create aggregate works using two packages which use
+the same licenses.</p></blockquote>
+
+<p>I hate falling in to the trap of what could&rsquo;ve/should&rsquo;ve, but lets entertain Andy&rsquo;s thoughts for a little bit. IF this licensing scheme had taken off, JBoss had a few choices:</p>
+
+<ol>
+<li><p> Include those libraries AND their attribution. He&rsquo;s right, this would&rsquo;ve made for a really ugly web application.</p></li>
+<li><p> Sign agreements with the underlying component authors to remove the atributions.</p></li>
+<li><p> Find another package that does the same thing and doesn&rsquo;t require attribution.</p></li>
+</ol>
+
+
+<p>So there it is&hellip; is choice diminished? Is the code any less &ldquo;open&rdquo; and free? Is its redistribution negated? Nope. Take his mention of Alfresco&hellip; They require attribution, so what are my choices if I want to bundle Alfresco with my web application?</p>
+
+<ol>
+<li><p> Build a competing product, myself.</p></li>
+<li><p> Sign an agreement with them for attribution removal.</p></li>
+<li><p> Find another JCR-compliant DMS. (Magnolia, Nuxeo, Jackrabbit, etc&hellip;)</p></li>
+<li><p> Include the atribution.</p></li>
+<li><p> Go cry on <a href="http://www.theserverside.com">TSS</a> about their licensing.</p></li>
+</ol>
+
+
+<p>I do agree, in this scenario, that badgeware licenses <em>may</em> affect adoption of a product. People still have choice, and most, will likely choose the free options rather than the costly ones. However, its a calculated move by these companies, as they are probably betting that those who choose to sign agreements will offset the lost revenue of those who went elsewhere. My own opinion on attribution licenses is that they will slow down adoption and decrease market share. Is that a price worth paying? Apparently some of these companies think so.</p>
+
+<p>Next, in Andy&rsquo;s rant&hellip; err&hellip; rebuttal&hellip;</p>
+
+<blockquote><p>&hellip;you guys are potentially creating a class software that can&rsquo;t be aggregated
+together even under the same license! A class of software that you wouldn&rsquo;t use
+in your product for practical reasons (every screen has millions of pixels
+dedicated to ads). You want to call that open source?? Get real! (BTW none of
+their licenses have been approved by OSI YET)</p></blockquote>
+
+<p>This software can be aggregated just as before. The one clause in many of these licenses is that I must display some attribution in some part of my app (this differs from license to license). So it may appear distasteful to you, Andy, to add the attribution in your application, but guess what? It may also be distasteful for some to bundle their applications with MySQL, being GPL. So what does MySQL offer? A commercial license!</p>
+
+<p>Andy, being Andy, does a good job at self-promotion at the end of his blog about his company <a href="http://www.buni.org/mediawiki/index.php/Main_Page">BuniSoft</a> and its product, <a href="http://buni.org/mediawiki/index.php/Meldware_Communications_Suite">MeldWare</a>. It wouldn&rsquo;t be fair if I didn&rsquo;t mention that his product does compete with <a href="http://www.zimbra.com/">Zimbra</a>, which just happens to have its own license, <a href="http://www.zimbra.com/license/zimbra_public_license_1.2.html">ZPL</a>, which just happens to have an attribution clause. Imagine that! ;&ndash;)</p>
+
+<p>STAY METAL!
+Roy Russo</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/01/11/badgeware-and-open-source/">Badgeware and Open Source</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-01-11T10:05:00-05:00" pubdate data-updated="true">Jan 11<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A few months ago I stumbled across this well-written <a href="http://blogs.zdnet.com/BTL/index.php?p=3430">article on ZDNet</a> that discusses whether &ldquo;badgeware&rdquo; should be considered &ldquo;Open Source&rdquo;. For those of you that may not know&hellip; the &ldquo;official&rdquo; definition of Open Source is maintainted by some self-appointed organization, known as <a href="http://www.opensource.org/">OSI</a>. You can view their definition, in its entirety, <a href="http://www.opensource.org/docs/definition.php">here</a>. OSI is responsible for defining &ldquo;open source&rdquo; AND adding their stamp of approval for the many licenses that are floating about nowadays. To my knowledge they refuse to add any &ldquo;badgeware&rdquo; licenses to their approved list &ndash; even though most of these licenses are simply derivatives of the <a href="http://www.opensource.org/licenses/mozilla1.1.php">Mozilla Public License</a>.</p>
+
+<p>The term &ldquo;badgeware&rdquo;, generally means that a licensee must leave in-place certain image/text hyperlinks that normally point to the author&rsquo;s website. So yes, you have access to all the source code, but are not allowed to remove these images that identify the original authors. Is <strong>that</strong> &ldquo;open source&rdquo;? To me, it is. To the OSI, it isn&rsquo;t.</p>
+
+<p><strong>Why does badgeware exist?</strong></p>
+
+<p>Simply put &ndash; It stops the <a href="http://www.zpub.com/un/larryhotdog.jpg">Larrys</a> of the world from taking your code, branding it with their big fat &ldquo;O&rdquo;, making a mint off of it, and never paying you a nickle. Its another method that open source companies have found to create cash from &ldquo;free&rdquo; (or &ldquo;monetizing&rdquo; &ndash; stupid word).</p>
+
+<p>A lot of these badgeware companies own all of their product&rsquo;s IP. In other words, they own the rights to the code. This is an important distinction from the opensource companies/projects of before, because when you own all of your IP, you are able to change licenses whenever it pleases you. For example, if Apple wanted to rebrand OpenSourceProductX, its authors could change the license to something Apple would think is appropriate, in exchange for $. So badgeware has two positive effects, 1. Free branding, and 2. Cash.</p>
+
+<p>In fairness, I will also mention that another avenue for a badgeware company turning their products in to cash is that the &ldquo;badge&rdquo; serves as a nag of sorts. The MuleSource CEO is pretty clear about his motives in <a href="http://weblog.infoworld.com/openresource/archives/2006/11/licensing_in_lo.html">this posting</a>, regarding that:</p>
+
+<blockquote><p>So, if you use Mule in your software product and sell it
+commercially, then you are required to either make a licensing deal with us or keep the &ldquo;powered by Mule&rdquo; logo visible.</p></blockquote>
+
+<p>SugarCRM is probably the best known example of this. If you were to download their open source CRM application, you would find their SugarCRM logo at the bottom of every page, and are bound by the license terms to not remove it. <em>Sorry, Larry, you can&rsquo;t take Sugar and rebrand it Oracle.</em></p>
+
+<p><strong>Is badgeware open source?</strong></p>
+
+<p>I know&hellip; why there&rsquo;s a stink over this is actually quite silly, but there has always been an overabundance of sillyness and religious fighting in the opensource world, so its par for the course. Why OSI won&rsquo;t approve of these new licenses, I could not gather from the article. After reading the OSI&rsquo;s definition of &ldquo;open source&rdquo;, I could not find any bullet-point that forbids &ldquo;badgeware&rdquo;.</p>
+
+<p>Working for JBoss, I&rsquo;ve had to listen to the pinheads at BEA launch public crybaby fits over &ldquo;JBoss is not as open source as BEA, as open source as IBM, as open source as Apache, as open source as your mom&rdquo;. From them, I expect the ridiculous and incoherent ramblings of a lunatic&hellip; from the OSI I would simply expect a coherent and reasonable bulletpoint in their definition of open source.</p>
+
+<p>Badgeware is certainly not going away, and my fear is that if the OSI chooses to ignore it, or worse, refuses to approve the licenses, they will find themselves as irrelevant as the UN in short time.</p>
+
+<p>STAY METAL!
+Roy Russo</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:royrusso.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/03/12/debug-maven-test-goal-with-intellij-idea/">Debug Maven Test Goal With Intellij IDEA</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/15/elastichq-elasticsearch-monitoring-management/">ElasticHQ - ElasticSearch Monitoring & Management</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/23/how-to-extension-less-urls-using-php-in-apache-2-x/">How-To: Extension-less URLs Using PHP in Apache 2.x</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/05/jwatch-a-quartz-monitor/">JWatch - a Quartz Monitor</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/04/19/terracotta-quartz-relational-model/">Terracotta Quartz Relational Model</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

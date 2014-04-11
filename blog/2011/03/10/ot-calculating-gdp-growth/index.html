@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>OT: Calculating GDP Growth - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="As I work on a new site, I hit a bit of a wall when trying to calculate GDP Growth Rate, given Quarterly GDP figures (in Billions $). I had a very &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://royrusso.github.io/blog/2011/03/10/ot-calculating-gdp-growth">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">OT: Calculating GDP Growth</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-10T11:18:59-05:00" pubdate data-updated="true">Mar 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>As I work on a new site, I hit a bit of a wall when trying to calculate GDP Growth Rate, given Quarterly GDP figures (in Billions $). I had a very hard time trying to find this through the almighty Google, and a lot of the formulas on the web, are either wrong or simply cover how GDP is calculated, which is not what I needed:</p>
+
+<blockquote><p>Y = C + I + E + G, where
+Y = GDP
+C = Consumer Spending
+I = Investment made by industry
+E = Excess of Exports over Imports
+G = Government Spending</p></blockquote>
+
+<p>So dusting off some old Economics books, the formula for calculating Annual GDP growth over two periods (usually measured in Quarters) is:</p>
+
+<blockquote><p>(((x(t)/x(t-1)) ^ (number_of_observations_per_year)) &ndash; 1) * 100</p></blockquote>
+
+<p>Where:</p>
+
+<blockquote><ul>
+<li><p>&lsquo;x(t)&rsquo; is the value of GDP x at time period t.</p></li>
+<li><p>&lsquo;x(t-1)&rsquo; is the value of GDP x at time period t-1, or the previous Quarter.</p></li>
+<li><p>&lsquo;^&rsquo; means, to the power of.</p></li>
+<li><p>&lsquo;number_of_observations_per_year&rsquo; in this case would be 4.</p></li>
+</ul>
+</blockquote>
+
+<p>So given values (in Billions $) for Q3 and Q4 2010, we have:</p>
+
+<p>(((13370.10 / 13278.50)^ 4) -1 )* 100 = 2.8%</p>
+
+<p>Now hopefully Google will lead the other 3 people in the world that are looking for this formula here. ;&ndash;)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">royrusso</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-10T11:18:59-05:00" pubdate data-updated="true">Mar 10<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/economics/'>Economics</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://royrusso.github.io/blog/2011/03/10/ot-calculating-gdp-growth/" data-via="" data-counturl="http://royrusso.github.io/blog/2011/03/10/ot-calculating-gdp-growth/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/03/02/java-and-the-lean-saas-startup/" title="Previous Post: Java and the Lean SaaS Startup">&laquo; Java and the Lean SaaS Startup</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/03/17/mapping-iso-country-codes-alpha-2-to-alpha3/" title="Next Post: Mapping ISO Country Codes Alpha-2 to Alpha3">Mapping ISO Country Codes Alpha-2 to Alpha3 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:royrusso.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/03/12/debug-maven-test-goal-with-intellij-idea/">Debug Maven Test Goal With Intellij IDEA</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/15/elastichq-elasticsearch-monitoring-management/">ElasticHQ - ElasticSearch Monitoring & Management</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/23/how-to-extension-less-urls-using-php-in-apache-2-x/">How-To: Extension-less URLs Using PHP in Apache 2.x</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/05/jwatch-a-quartz-monitor/">JWatch - a Quartz Monitor</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/04/19/terracotta-quartz-relational-model/">Terracotta Quartz Relational Model</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

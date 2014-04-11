@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Maven | My Octopress Blog]]></title>
+  <link href="http://royrusso.github.io/blog/categories/maven/atom.xml" rel="self"/>
+  <link href="http://royrusso.github.io/"/>
+  <updated>2014-04-11T14:08:39-04:00</updated>
+  <id>http://royrusso.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Debug Maven Test Goal With Intellij IDEA]]></title>
+    <link href="http://royrusso.github.io/blog/2014/03/12/debug-maven-test-goal-with-intellij-idea/"/>
+    <updated>2014-03-12T06:00:00-04:00</updated>
+    <id>http://royrusso.github.io/blog/2014/03/12/debug-maven-test-goal-with-intellij-idea</id>
+    <content type="html"><![CDATA[<p>Making it possible to live-debug and add breakpoints to your code during a maven test goal in Intellij Idea, shouldn&rsquo;t take more than a minute.</p>
+
+<ol>
+<li><p>Modify your pom to have the debug process fork:</p></li>
+<li><p>Next, configure your debug process. You reach that under <code>Run &gt; Edit Configuration</code> and add a <strong>Remote</strong> debugger:</p></li>
+</ol>
+
+
+<p><a href="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.05.15-PM.png"><img src="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.05.15-PM-300x232.png" alt="Maven debug remote intellij" /></a></p>
+
+<ol>
+<li>Once the above is configured, <strong>run</strong> the <code>mvn test</code> goal. It should pause, listening on port 5005&hellip;</li>
+</ol>
+
+
+<p><a href="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.13.23-PM.png"><img src="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.13.23-PM-300x289.png" alt="" /></a></p>
+
+<ol>
+<li>Now execute the remote debugger you configured earlier. It should attach on port 5005. If you don&rsquo;t have any breakpoints, you should see the below. If you have breakpoints, obviously they will trigger&hellip;</li>
+</ol>
+
+
+<p><a href="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.17.36-PM.png"><img src="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.17.36-PM-300x49.png" alt="" /></a></p>
+]]></content>
+  </entry>
+  
+</feed>

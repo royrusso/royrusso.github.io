@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Debug Maven Test Goal With Intellij IDEA - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="Making it possible to live-debug and add breakpoints to your code during a maven test goal in Intellij Idea, shouldn&rsquo;t take more than a minute &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://royrusso.github.io/blog/2014/03/12/debug-maven-test-goal-with-intellij-idea">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Debug Maven Test Goal With Intellij IDEA</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-12T06:00:00-04:00" pubdate data-updated="true">Mar 12<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Making it possible to live-debug and add breakpoints to your code during a maven test goal in Intellij Idea, shouldn&rsquo;t take more than a minute.</p>
+
+<ol>
+<li><p>Modify your pom to have the debug process fork:</p></li>
+<li><p>Next, configure your debug process. You reach that under <code>Run &gt; Edit Configuration</code> and add a <strong>Remote</strong> debugger:</p></li>
+</ol>
+
+
+<p><a href="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.05.15-PM.png"><img src="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.05.15-PM-300x232.png" alt="Maven debug remote intellij" /></a></p>
+
+<ol>
+<li>Once the above is configured, <strong>run</strong> the <code>mvn test</code> goal. It should pause, listening on port 5005&hellip;</li>
+</ol>
+
+
+<p><a href="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.13.23-PM.png"><img src="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.13.23-PM-300x289.png" alt="" /></a></p>
+
+<ol>
+<li>Now execute the remote debugger you configured earlier. It should attach on port 5005. If you don&rsquo;t have any breakpoints, you should see the below. If you have breakpoints, obviously they will trigger&hellip;</li>
+</ol>
+
+
+<p><a href="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.17.36-PM.png"><img src="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.17.36-PM-300x49.png" alt="" /></a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">royrusso</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-12T06:00:00-04:00" pubdate data-updated="true">Mar 12<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/intellij-idea/'>Intellij IDEA</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/maven/'>Maven</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://royrusso.github.io/blog/2014/03/12/debug-maven-test-goal-with-intellij-idea/" data-via="" data-counturl="http://royrusso.github.io/blog/2014/03/12/debug-maven-test-goal-with-intellij-idea/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/05/15/elastichq-elasticsearch-monitoring-management/" title="Previous Post: ElasticHQ - ElasticSearch Monitoring & Management">&laquo; ElasticHQ - ElasticSearch Monitoring & Management</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:royrusso.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/03/12/debug-maven-test-goal-with-intellij-idea/">Debug Maven Test Goal With Intellij IDEA</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/15/elastichq-elasticsearch-monitoring-management/">ElasticHQ - ElasticSearch Monitoring & Management</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/23/how-to-extension-less-urls-using-php-in-apache-2-x/">How-To: Extension-less URLs Using PHP in Apache 2.x</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/05/jwatch-a-quartz-monitor/">JWatch - a Quartz Monitor</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/04/19/terracotta-quartz-relational-model/">Terracotta Quartz Relational Model</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

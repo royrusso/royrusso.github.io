@@ -9,7 +9,7 @@
   <meta name="author" content="Your Name">
 
   
-  <meta name="description" content=" Blog Archives Recent Posts ">
+  <meta name="description" content="Making it possible to live-debug and add breakpoints to your code during a maven test goal in Intellij Idea, shouldn&rsquo;t take more than a minute &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -27,8 +27,8 @@
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
   
 
@@ -44,17 +44,10 @@
 
 </header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
   
 </ul>
-  
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:royrusso.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
+
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
@@ -66,17 +59,601 @@
       <div class="blog-index">
   
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/12/debug-maven-test-goal-with-intellij-idea/">Debug Maven Test Goal With Intellij IDEA</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-12T06:00:00-04:00" pubdate data-updated="true">Mar 12<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Making it possible to live-debug and add breakpoints to your code during a maven test goal in Intellij Idea, shouldn&rsquo;t take more than a minute.</p>
+
+<ol>
+<li><p>Modify your pom to have the debug process fork:</p></li>
+<li><p>Next, configure your debug process. You reach that under <code>Run &gt; Edit Configuration</code> and add a <strong>Remote</strong> debugger:</p></li>
+</ol>
+
+
+<p><a href="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.05.15-PM.png"><img src="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.05.15-PM-300x232.png" alt="Maven debug remote intellij" /></a></p>
+
+<ol>
+<li>Once the above is configured, <strong>run</strong> the <code>mvn test</code> goal. It should pause, listening on port 5005&hellip;</li>
+</ol>
+
+
+<p><a href="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.13.23-PM.png"><img src="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.13.23-PM-300x289.png" alt="" /></a></p>
+
+<ol>
+<li>Now execute the remote debugger you configured earlier. It should attach on port 5005. If you don&rsquo;t have any breakpoints, you should see the below. If you have breakpoints, obviously they will trigger&hellip;</li>
+</ol>
+
+
+<p><a href="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.17.36-PM.png"><img src="http://www.royrusso.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-11-at-3.17.36-PM-300x49.png" alt="" /></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/05/15/elastichq-elasticsearch-monitoring-management/">ElasticHQ - ElasticSearch Monitoring & Management</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-15T00:39:42-04:00" pubdate data-updated="true">May 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As a long-time user of ElasticSearch, I&rsquo;m proud to announce a new project I&rsquo;ve undertaken, <a href="http://www.elastichq.org">ElasticHQ</a> &ndash; an <a href="http://www.elastichq.org">ElasticSearch Management and Monitoring</a> solution that is 100% browser-based, ie. No software to install.</p>
+
+<p>Those who know me, would note that this is a departure from my usual style of coding and architecture, but after studying the ElasticSearch Java API (mainly TransportClient), I decided it would spur mass adoption if the application was run on the client (browser). So using Backbone.js, Underscore.js, Twitter Bootstrap, and Flot charts, I managed to carve out a solid nucleus I can build upon.</p>
+
+<p>Feel free to check it out here: <a href="http://www.elastichq.org">ElasticHQ.org</a></p>
+
+<p>For those that want to look at the code, you can find it on Github, under <a href="https://github.com/royrusso/elasticsearch-HQ">ElasticSearch-HQ</a>. There is also a <a href="https://groups.google.com/forum/?fromgroups#!forum/elastichq">Google Group</a>, although not advertised yet.</p>
+
+<p>[gallery columns=&ldquo;2&rdquo; link=&ldquo;file&rdquo; ids=&ldquo;227,228,229,230&rdquo;]</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/02/23/how-to-extension-less-urls-using-php-in-apache-2-x/">How-To: Extension-less URLs Using PHP in Apache 2.x</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-23T10:50:16-05:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/07/05/jwatch-a-quartz-monitor/">JWatch - a Quartz Monitor</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-05T10:09:35-04:00" pubdate data-updated="true">Jul 5<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I am proud to announce the release of <a href="http://code.google.com/p/jwatch/">JWatch v0.8</a> &ndash; An Open Source and Free Monitoring Application for the <a href="http://quartz-scheduler.org/">Quartz Job Scheduler</a>. The browser-based user-interface allows developers to monitor multiple Quartz instances in real-time. In addition, a RESTful API is available for those wishing to extend the application.</p>
+
+<p>Future releases will expand JWatch&rsquo;s capabilities with the addition of management features, designed to make it easy for users to change Quartz Jobs and Triggers in real-time and monitor the changes. <em><strong> </strong></em></p>
+
+<p><em><strong>Note:</strong> The current release of JWatch works with Quartz 2.0+. It will not work with previous versions of Quartz.</em></p>
+
+<p>The current release of JWatch, includes the following features:</p>
+
+<ul>
+<li><p>Monitor multiple Quartz Instances across multiple applications concurrently.</p></li>
+<li><p>Monitor multiple Schedulers and Jobs per Quartz Instance.</p></li>
+<li><p>Drill-down for more information in to Quartz Job and Trigger objects.</p></li>
+<li><p>Real-Time monitoring of presently executing jobs.</p></li>
+<li><p><a href="http://code.google.com/p/jwatch/wiki/RESTfulAPI">RESTful JSON API</a> for those wishing to extend the application.</p></li>
+<li><p>Easy to deploy &ndash; just drop in a war and configure your instances.</p></li>
+<li><p><strong>It&rsquo;s free!</strong> (<a href="http://code.google.com/p/jwatch/source/browse/trunk/LICENSE">LGPL</a>)</p></li>
+<li><p>Easy <a href="http://code.google.com/p/jwatch/wiki/Installation">installation and configuration</a>.</p></li>
+</ul>
+
+
+<p><img src="../wp-includes/js/tinymce/plugins/wpgallery/img/t.gif" alt="" /></p>
+
+<p>Screenshots:</p>
+
+<p>[gallery link=&ldquo;file&rdquo; columns=&ldquo;2&rdquo;]</p>
+
+<p>Links:</p>
+
+<ul>
+<li><p><a href="http://code.google.com/p/jwatch/">JWatch &ndash; A Quartz Monitor Home</a></p></li>
+<li><p><a href="http://code.google.com/p/jwatch/wiki/Installation">Installation / Configuration Documentation</a></p></li>
+<li><p><a href="http://code.google.com/p/jwatch/wiki/RESTfulAPI">RESTful API Documentation</a></p></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/19/terracotta-quartz-relational-model/">Terracotta Quartz Relational Model</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-19T15:55:33-04:00" pubdate data-updated="true">Apr 19<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;ve been working on an OSS project during my spare time which is deeply intertwined with <a href="http://www.quartz-scheduler.org/">Terracotta Quartz</a>. Because of the nature of the project, I do not interface with Quartz through the standard API (no bundling), but am accessing it via JMX MBean. This is not an easy task, as there are large differences between Quartz 1.x and Quartz 2.x exposed methods and bundling Quartz in the project distro is <strong>not</strong> an option. Since I plan to support different versions of Quartz, it is left up to my adapters to figure out what version someone has installed and how it should access remote methods.<em> Any guess to what I&rsquo;m building?</em> ;&ndash;)</p>
+
+<p>One thing I was unable to find is how the <em>important</em> Quartz objects relate to each other. In the past, I&rsquo;ve implemented Quartz in projects, but never really dug around at its internals. Even while implementing Quartz, I found I often ended up with a one-to-one relationship between the major components. <strong>Instance &ndash;> Schedule &ndash;> Group &ndash;> (many)Job</strong>.</p>
+
+<p>But wouldn&rsquo;t you know it &ndash; Quartz is a lot more flexible than that, allowing many-to-one relationships for several components. Here is a rather raw diagram of how all the pieces pay together. I didn&rsquo;t do a very good job of showing the many-to-one relationships in the model, but you get the point.</p>
+
+<p><a href="http://www.royrusso.com/wp-content/uploads/2011/04/quartz_relation_model.png"><img src="http://www.royrusso.com/wp-content/uploads/2011/04/quartz_relation_model-300x272.png" alt="" /></a></p>
+
+<p>Frankly, I would never have discovered this under normal use, and had to dig around with the JMX MBean to visualize this. It may be documented somewhere, but I couldn&rsquo;t find it.</p>
+
+<p>Quartz&#8217; flexibility is great, but building a UI around this is going to be interesting. ;&ndash;)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/02/get-all-jobs-with-terracotta-quartz-2-0/">Get All Jobs With Terracotta Quartz 2.0+</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-02T09:11:13-04:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The most recent <a href="http://www.quartz-scheduler.org/">Terracotta Quartz</a> release seems to have changed some of the API methods to list scheduled jobs. Although minor changes, I thought I&rsquo;d post sample code here for anyone trying the same thing as I, and hitting a wall with the API differences. Some of the changes are <a href="http://www.quartz-scheduler.org/docs/2.0/newInQuartz2.html">documented here</a> in the latest release, but it&rsquo;s OSS, so expect the docs to suck. ;&ndash;)</p>
+
+<p>The changes, as best I can tell (<em>correct me if I&rsquo;m wrong</em>), revolve around accessing the Scheduler object.You can see the differences between the <a href="http://www.quartz-scheduler.org/docs/api/1.8.1/index.html">1.8 API</a> and the <a href="http://www.quartz-scheduler.org/docs/api/2.0.0/index.html">2.0 API</a>.</p>
+
+<p>Changes I found:</p>
+
+<ul>
+<li><p><strong>scheduler.getJobGroupNames()</strong> now returns a List<String> , and not a String[].</p></li>
+<li><p><strong>scheduler.getJobNames(groupName);</strong> has dissapeared.</p></li>
+<li><p>You must now use <strong>scheduler.getJobKeys(GroupMatcher.groupEquals(name));</strong> to get a Set<JobKey>, which will be used to call <strong>scheduler.getJobDetail((JobKey)iter.next());</strong></p></li>
+</ul>
+
+
+<h3>Sample Code</h3>
+
+<pre><code>      try
+      { 
+         Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+         List jobGroups = scheduler.getJobGroupNames();
+         for (int i = 0; i &lt; jobGroups.size(); i++)
+         {
+            String name = (String) jobGroups.get(i);
+            Set keys = scheduler.getJobKeys(GroupMatcher.groupEquals(name));
+            Iterator iter = keys.iterator();
+            while (iter.hasNext())
+            {
+               JobDetail jobDetail = scheduler.getJobDetail((JobKey)iter.next());
+               JobDataMap jobDataMap = jobDetail.getJobDataMap();
+               // do something
+            }
+         }
+      }
+      catch (SchedulerException se)
+      {
+         se.printStackTrace();
+      }
+</code></pre>
+
+<p>I specially like the addition of <strong>scheduler.getJobKeys(GroupMatcher.groupEquals(name));</strong>, where <a href="http://www.quartz-scheduler.org/docs/api/2.0.0/org/quartz/impl/matchers/GroupMatcher.html">GroupMatcher</a> can take some crude expressions like <strong>groupContains(String compareTo)</strong> and <strong>groupStartsWith(String compareTo)</strong>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/17/mapping-iso-country-codes-alpha-2-to-alpha3/">Mapping ISO Country Codes Alpha-2 to Alpha3</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-17T15:26:28-04:00" pubdate data-updated="true">Mar 17<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A recent experiment with IMF, CIA, and World Bank datasets had me fighting to map ISO 3166 Alpha-3 codes to ISO 3166 Alpha-2 codes. The reason I had to perform the mappings, is because most downloaded flag icon libs on the web are based on Alpha-2 codes.</p>
+
+<p>I have managed to map 183 countries in my local database, and am making the clean CSV available for download <a href="http://www.royrusso.com/wp-content/uploads/2011/03/iso.csv">here</a>.</p>
+
+<p>The format is:</p>
+
+<pre><code>ISO ALPHA-2 Code , ISO ALPHA-3 Code
+AF,AFG
+AX,ALA
+AL,ALB
+DZ,DZA
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/10/ot-calculating-gdp-growth/">OT: Calculating GDP Growth</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-10T11:18:59-05:00" pubdate data-updated="true">Mar 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As I work on a new site, I hit a bit of a wall when trying to calculate GDP Growth Rate, given Quarterly GDP figures (in Billions $). I had a very hard time trying to find this through the almighty Google, and a lot of the formulas on the web, are either wrong or simply cover how GDP is calculated, which is not what I needed:</p>
+
+<blockquote><p>Y = C + I + E + G, where
+Y = GDP
+C = Consumer Spending
+I = Investment made by industry
+E = Excess of Exports over Imports
+G = Government Spending</p></blockquote>
+
+<p>So dusting off some old Economics books, the formula for calculating Annual GDP growth over two periods (usually measured in Quarters) is:</p>
+
+<blockquote><p>(((x(t)/x(t-1)) ^ (number_of_observations_per_year)) &ndash; 1) * 100</p></blockquote>
+
+<p>Where:</p>
+
+<blockquote><ul>
+<li><p>&lsquo;x(t)&rsquo; is the value of GDP x at time period t.</p></li>
+<li><p>&lsquo;x(t-1)&rsquo; is the value of GDP x at time period t-1, or the previous Quarter.</p></li>
+<li><p>&lsquo;^&rsquo; means, to the power of.</p></li>
+<li><p>&lsquo;number_of_observations_per_year&rsquo; in this case would be 4.</p></li>
+</ul>
+</blockquote>
+
+<p>So given values (in Billions $) for Q3 and Q4 2010, we have:</p>
+
+<p>(((13370.10 / 13278.50)^ 4) -1 )* 100 = 2.8%</p>
+
+<p>Now hopefully Google will lead the other 3 people in the world that are looking for this formula here. ;&ndash;)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/02/java-and-the-lean-saas-startup/">Java and the Lean SaaS Startup</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-02T17:38:49-05:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;ve had a lot of time on my hands lately. I&rsquo;ve mostly spent it playing with fish tanks, but as of last week, I was all out of fish work and room for new tanks&hellip; so I started talking to a few Atlanta startups. I basically go in, they hammer me with questions and I do my best to not look stupid. After what I helped build at LoopFuse, you&rsquo;d be hard pressed to find someone in this town that can build something that secure, scalable, fault-tolerant and damn intuitive to use! This isn&rsquo;t San Francisco, and yes, that was an arrogant statement.</p>
+
+<p>There are a few common challenges I see that keep popping-up in the Atlanta Java SaaS startup world. I&rsquo;ll try my best to summarize what I think is the best-of-breed combination of SaaS startup technologies and hopefully arrive at a decent stack. These are common threads I keep seeing, and also tools that I used one of my many SaaS jobs or while I worked at JBoss.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/03/02/java-and-the-lean-saas-startup/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/02/23/new-nano-10g-saltwater-tank/">New Nano 10g Saltwater Tank</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-23T11:30:02-05:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;d hate to call this an experiment as it deals with living creatures, many of them plucked from the ocean and thrown in to my new saltwater tank in the hopes they survive, but it is my first attempt at keeping a saltwater tank &ndash; so in essence &ndash; an experiment. ;&ndash;)</p>
+
+<p>So far the inhabitants of this tiny ecosystem are:</p>
+
+<ol>
+<li><p> Two Clownfish. (Laurel and Hardy)</p></li>
+<li><p> One Peppermint Shrimp. (Pepe)</p></li>
+<li><p> One Haitian Anemone, also known as the Pink-Tip Condy.</p></li>
+<li><p> 5 Hermit Crabs.</p></li>
+<li><p> 2 Turbo Snails.</p></li>
+<li><p> Thousands of little copepods floating around being eaten by Laurel and Hardy.</p></li>
+<li><p> An Asterina starfish (that I did not buy) missing 4 of his arms.</p></li>
+<li><p> A bristleworm (that I did not buy). <em>This thing is hideous and I wish I could kill it, but it does serve a purpose scavenging.</em></p></li>
+</ol>
+
+
+<h3>The Good News</h3>
+
+<ul>
+<li><p>Almost two months in to it, no one has died, and new life/creatures are springing to life from the rock and sand bed.</p></li>
+<li><p>Kids love it &ndash; although the initial awe has worn off, they&rsquo;re always finding something new moving around.</p></li>
+<li><p>Hermit crabs and Turbo snails mow through the initial algae spike like a fat guy at an all you can eat buffet.</p></li>
+<li><p>Maintenance is no more time-consuming than my freshwater tanks.</p></li>
+<li><p>Luckily I had a lot of the initial equipment, keeping costs low.</p></li>
+<li><p>Live Sand was given to me by Sal at AllReef in Acworth, GA, which I would think he pulled from his tanks. This surely helped speed up the initial cycling process.</p></li>
+</ul>
+
+
+<h3>The Bad News (Or what I&rsquo;ve learned so far)</h3>
+
+<ul>
+<li><p>&ldquo;Nothing good happens in nature quickly.<strong> Only bad thing happen quickly in nature.</strong>&rdquo; After you set everything up, you have to sit around for at least a month until the Live Rock &ldquo;cures&rdquo; and your ammonia dissipates and your nitrites lower and your nitrates rise. There&rsquo;s an elaborate chemical cycle that has to complete before you should add even a snail. It&rsquo;s too much to go in to in one blog post &ndash; books have been written over this subject.</p></li>
+<li><p>Lighting, arguably the most important piece of equipment for coral growth, is extremely expensive. A 24&#8221; T5 High-Output fixture (with blue LEDs for night-time awesomeness) will run you about $90. Metal Hallide, the gold standard for coral growth, will run you your left arm and part of your left leg.</p></li>
+<li><p>Something I wish I would&rsquo;ve known: Apparently the smaller the tank in this hobby, the greater the chances of it completely failing (ie, everything dying). Chemical changes in a large tank simply dillute faster over a larger area.</p></li>
+<li><p>To successfully keep a reef tank that is in the 100+ gallon range, you&rsquo;re talking thousands of dollars on initial setup, and on top of that try and figure out how you&rsquo;re going to handle water changes or topping off water, because you can only use water that is distilled/reverse-osmosis. My 5-gallon buckets won&rsquo;t cut it.</p></li>
+</ul>
+
+
+<p>[gallery link=&ldquo;file&rdquo;]</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
   </div>
 </div>
 <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:royrusso.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
   
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/03/12/debug-maven-test-goal-with-intellij-idea/">Debug Maven Test Goal With Intellij IDEA</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/15/elastichq-elasticsearch-monitoring-management/">ElasticHQ - ElasticSearch Monitoring & Management</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/23/how-to-extension-less-urls-using-php-in-apache-2-x/">How-To: Extension-less URLs Using PHP in Apache 2.x</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/05/jwatch-a-quartz-monitor/">JWatch - a Quartz Monitor</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/04/19/terracotta-quartz-relational-model/">Terracotta Quartz Relational Model</a>
+      </li>
     
   </ul>
 </section>
@@ -87,6 +664,7 @@
 
   
 </aside>
+
 
     </div>
   </div>
@@ -116,6 +694,27 @@
 
 
 
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
 
 
 </body>
