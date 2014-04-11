@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[Roy's Blog]]></title>
   <link href="http://royrusso.github.io/atom.xml" rel="self"/>
   <link href="http://royrusso.github.io/"/>
-  <updated>2014-04-11T14:13:42-04:00</updated>
+  <updated>2014-04-11T14:33:49-04:00</updated>
   <id>http://royrusso.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Roy Russo]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -58,15 +58,6 @@
 <p>For those that want to look at the code, you can find it on Github, under <a href="https://github.com/royrusso/elasticsearch-HQ">ElasticSearch-HQ</a>. There is also a <a href="https://groups.google.com/forum/?fromgroups#!forum/elastichq">Google Group</a>, although not advertised yet.</p>
 
 <p>[gallery columns=&ldquo;2&rdquo; link=&ldquo;file&rdquo; ids=&ldquo;227,228,229,230&rdquo;]</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How-To: Extension-less URLs Using PHP in Apache 2.x]]></title>
-    <link href="http://royrusso.github.io/blog/2013/02/23/how-to-extension-less-urls-using-php-in-apache-2-x/"/>
-    <updated>2013-02-23T10:50:16-05:00</updated>
-    <id>http://royrusso.github.io/blog/2013/02/23/how-to-extension-less-urls-using-php-in-apache-2-x</id>
-    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   

@@ -5,8 +5,8 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>My Octopress Blog</title>
-  <meta name="author" content="Your Name">
+  <title>Roy's Blog</title>
+  <meta name="author" content="Roy Russo">
 
   
   <meta name="description" content="Making it possible to live-debug and add breakpoints to your code during a maven test goal in Intellij Idea, shouldn&rsquo;t take more than a minute &hellip;">
@@ -21,7 +21,7 @@
   <link rel="canonical" href="http://royrusso.github.io">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="Roy's Blog" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -36,9 +36,9 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">My Octopress Blog</a></h1>
+  <h1><a href="/">Roy's Blog</a></h1>
   
-    <h2>A blogging framework for hackers.</h2>
+    <h2>On Software and Fish.</h2>
   
 </hgroup>
 
@@ -154,42 +154,6 @@
 <p>For those that want to look at the code, you can find it on Github, under <a href="https://github.com/royrusso/elasticsearch-HQ">ElasticSearch-HQ</a>. There is also a <a href="https://groups.google.com/forum/?fromgroups#!forum/elastichq">Google Group</a>, although not advertised yet.</p>
 
 <p>[gallery columns=&ldquo;2&rdquo; link=&ldquo;file&rdquo; ids=&ldquo;227,228,229,230&rdquo;]</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/02/23/how-to-extension-less-urls-using-php-in-apache-2-x/">How-To: Extension-less URLs Using PHP in Apache 2.x</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-23T10:50:16-05:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
 </div>
   
   
@@ -613,6 +577,51 @@ G = Government Spending</p></blockquote>
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/02/22/cache-control-with-tomcat-jboss/">Cache Control With Tomcat-JBoss</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-22T11:47:09-05:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I was recently looking for a Cache Control Filter for a Tomcat instance in an effort to speed-up one of my sites serving content. Remembering that I once lifted <a href="http://docs.jboss.org/jbossas/javadoc/4.0.2/org/jboss/web/tomcat/filters/ReplyHeaderFilter.java.html">sample</a> code written by Scott Stark at JBoss. Looking through my libs, I did find his original code with some adjustments I had made for including <em>Expires</em> tag for cross-browser compatibility in caching content for a certain amount of time. I figured I would post a copy, for any of you wanting to add header variables to Tomcat content output.</p>
+
+<p><strong>Note:</strong> I normally create two copies of this filter. One for text content like HTML, CSS, and JS files, and another for image content like GIF, JPG, PNG. The reason is because you may want images to be cached for a longer period of time in the user&rsquo;s browser, as they don&rsquo;t change as often as markup and code, and you don&rsquo;t want to hack at your filter code to determine what type of content it is you&rsquo;re serving. My $.02.</p>
+
+<p><strong>UPDATE:</strong> It has come to my attention that Tomcat 7 bundles a cache filter you can find <a href="http://tomcat.apache.org/tomcat-7.0-doc/config/filter.html#Expires_Filter">here</a>. <strong>More importantly, there is a standalone cache-filter on google code that is actively maintained, <a href="http://code.google.com/p/xebia-france/">here</a>.</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/02/22/cache-control-with-tomcat-jboss/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -644,10 +653,6 @@ G = Government Spending</p></blockquote>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/02/23/how-to-extension-less-urls-using-php-in-apache-2-x/">How-To: Extension-less URLs Using PHP in Apache 2.x</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2011/07/05/jwatch-a-quartz-monitor/">JWatch - a Quartz Monitor</a>
       </li>
     
@@ -655,7 +660,40 @@ G = Government Spending</p></blockquote>
         <a href="/blog/2011/04/19/terracotta-quartz-relational-model/">Terracotta Quartz Relational Model</a>
       </li>
     
+      <li class="post">
+        <a href="/blog/2011/04/02/get-all-jobs-with-terracotta-quartz-2-0/">Get All Jobs With Terracotta Quartz 2.0+</a>
+      </li>
+    
   </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/royrusso">@royrusso</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'royrusso',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
 </section>
 
 
@@ -669,7 +707,7 @@ G = Government Spending</p></blockquote>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Your Name -
+  Copyright &copy; 2014 - Roy Russo -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
