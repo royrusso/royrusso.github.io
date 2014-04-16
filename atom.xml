@@ -4,7 +4,7 @@
   <title><![CDATA[Roy's Blog]]></title>
   <link href="http://royrusso.github.io/atom.xml" rel="self"/>
   <link href="http://royrusso.github.io/"/>
-  <updated>2014-04-15T20:33:36-04:00</updated>
+  <updated>2014-04-16T11:00:21-04:00</updated>
   <id>http://royrusso.github.io/</id>
   <author>
     <name><![CDATA[Roy Russo]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Moved to OctoPress]]></title>
+    <link href="http://royrusso.github.io/blog/2014/04/16/moved-to-octopress/"/>
+    <updated>2014-04-16T10:34:27-04:00</updated>
+    <id>http://royrusso.github.io/blog/2014/04/16/moved-to-octopress</id>
+    <content type="html"><![CDATA[<p>I finally grew tired of having to maintain and costantly patch my Wordpress instance at my host server, and so I have completed the move to
+Octopress from Wordpress. Having my blog hosted by Github, right out of a git repo is a great convenience. A few changes to the DNS record and
+now royrusso.com points to the github pages repo. The only issues that are obvious, is that the migration of the Wordpress posts doesn&rsquo;t pull in the images and galleries created in the old blog.
+Since this isn&rsquo;t a picture-heavy blog, I chose to do without migrating them at all.</p>
+
+<p><strong>Note to MAC OS Mavericks users:</strong> When running any <code>rake</code> command, I find it necessary on boot to initialize my terminal with the proper ruby version that octopress recommends:</p>
+
+<p><code>rvm install 1.9.3 &amp;&amp; rvm use 1.9.3</code></p>
+
+<p>I&rsquo;m sure there&rsquo;s a way to have this automagically, but for now, this suffices.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Debug Maven Test Goal With Intellij IDEA]]></title>

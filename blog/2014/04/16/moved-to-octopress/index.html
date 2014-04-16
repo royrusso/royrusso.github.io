@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Quartz - Roy's Blog</title>
+  <title>Moved to OctoPress - Roy's Blog</title>
   <meta name="author" content="Roy Russo">
 
   
-  <meta name="description" content="Category: Quartz">
+  <meta name="description" content="I finally grew tired of having to maintain and costantly patch my Wordpress instance at my host server, and so I have completed the move to
+Octopress &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://royrusso.github.ioblog/categories/quartz">
+  <link rel="canonical" href="http://royrusso.github.io/blog/2014/04/16/moved-to-octopress">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Roy's Blog" type="application/atom+xml">
@@ -77,36 +78,103 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Quartz</h1>
+    
+      <h1 class="entry-title">Moved to OctoPress</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-16T10:34:27-04:00" pubdate data-updated="true">Apr 16<span>th</span>, 2014</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://royrusso.github.io">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>I finally grew tired of having to maintain and costantly patch my Wordpress instance at my host server, and so I have completed the move to
+Octopress from Wordpress. Having my blog hosted by Github, right out of a git repo is a great convenience. A few changes to the DNS record and
+now royrusso.com points to the github pages repo. The only issues that are obvious, is that the migration of the Wordpress posts doesn&rsquo;t pull in the images and galleries created in the old blog.
+Since this isn&rsquo;t a picture-heavy blog, I chose to do without migrating them at all.</p>
 
-  
-  <h2>2011</h2>
+<p><strong>Note to MAC OS Mavericks users:</strong> When running any <code>rake</code> command, I find it necessary on boot to initialize my terminal with the proper ruby version that octopress recommends:</p>
 
-<article>
-  
-<h1><a href="/blog/2011/07/05/jwatch-a-quartz-monitor/">JWatch - a Quartz Monitor</a></h1>
-<time datetime="2011-07-05T10:09:35-04:00" pubdate><span class='month'>Jul</span> <span class='day'>05</span> <span class='year'>2011</span></time>
+<p><code>rvm install 1.9.3 &amp;&amp; rvm use 1.9.3</code></p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/jwatch-quartz-monitor/'>JWatch - Quartz Monitor</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/open-source-software/'>Open Source Software</a>, <a class='category' href='/blog/categories/quartz/'>Quartz</a></span>
-</footer>
-
-
-</article>
-
+<p>I&rsquo;m sure there&rsquo;s a way to have this automagically, but for now, this suffices.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Roy Russo</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-16T10:34:27-04:00" pubdate data-updated="true">Apr 16<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>Octopress</a>, <a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://royrusso.github.io/blog/2014/04/16/moved-to-octopress/" data-via="royrusso" data-counturl="http://royrusso.github.io/blog/2014/04/16/moved-to-octopress/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/03/12/debug-maven-test-goal-with-intellij-idea/" title="Previous Post: Debug Maven Test goal with Intellij IDEA">&laquo; Debug Maven Test goal with Intellij IDEA</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -210,7 +278,10 @@
       var disqus_shortname = 'roysblog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://royrusso.github.io/blog/2014/04/16/moved-to-octopress/';
+        var disqus_url = 'http://royrusso.github.io/blog/2014/04/16/moved-to-octopress/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
