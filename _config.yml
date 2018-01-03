@@ -29,7 +29,7 @@ linkedin_username: royrusso
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-clean-blog
+remote_theme: jekyll-theme-clean-blog
 # Build settings
 markdown:          kramdown
 paginate:          3
