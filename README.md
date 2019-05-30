@@ -8,4 +8,4 @@ Running on jekyll v3.x
 
 Local testing:
 
-`bundle install && jekyll serve`
+`bundle exec jekyll serve`
