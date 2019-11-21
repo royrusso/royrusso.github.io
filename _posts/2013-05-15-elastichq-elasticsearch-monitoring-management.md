@@ -2,6 +2,7 @@
 layout: post
 title: "ElasticHQ - ElasticSearch Monitoring & Management"
 date: 2013-05-15
+categories: [ElasticHQ]
 ---
 
 As a long-time user of ElasticSearch, I&rsquo;m proud to announce a new project I&rsquo;ve undertaken, <a href="http://www.elastichq.org">ElasticHQ</a> &ndash; an <a href="http://www.elastichq.org">ElasticSearch Management and Monitoring</a> solution that is 100% browser-based, ie. No software to install.

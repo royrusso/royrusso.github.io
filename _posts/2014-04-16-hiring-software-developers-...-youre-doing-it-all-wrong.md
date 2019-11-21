@@ -4,6 +4,7 @@ title: "Hiring Software Developers... You're Doing It All Wrong"
 date: 2014-04-16
 background: "/img/sv.jpg"
 author: "Roy Russo"
+categories: [Hiring]
 ---
 
     

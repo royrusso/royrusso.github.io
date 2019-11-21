@@ -29,15 +29,18 @@ linkedin_username: royrusso
 
 # Build settings
 markdown: kramdown
-#theme: jekyll-theme-clean-blog
-remote_theme: jekyll-theme-clean-blog
+theme: jekyll-theme-clean-blog
+#remote_theme: jekyll-theme-clean-blog
 # Build settings
 markdown:          kramdown
 paginate:          3
 paginate_path:     "/posts/page:num/"
+# permalink: /:categories/:year/:month/:day/:title:output_ext
+permalink: /:year/:month/:day/:title:output_ext
 plugins:
   - jekyll-feed
   - jekyll-paginate
+
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
