@@ -2,7 +2,7 @@
 layout: post
 title: "Acquisitions and The Cultural Divide"
 subtitle: How Financial Incentives Drive Company Culture
-description: How Financial Incentives Drive Company Culture.
+description: How financial incentives drive company culture and their effects on startup acquisitions.
 date: 2019-11-21
 background: "/img/columbus.jpeg"
 author: "Roy Russo"
