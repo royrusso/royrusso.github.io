@@ -7,6 +7,10 @@ background: "/img/columbus.jpeg"
 author: "Roy Russo"
 categories: [Startups]
 tags: [acquisitions, startups, M&A]
+image:
+    path: /img/columbus.jpeg
+    width: 500
+    height: 500
 ---
 
 **TLDR;** On startup acquisitions: Your culture will change, intentionally or otherwise. Embrace it. [Resistance is Futile
