@@ -34,7 +34,9 @@ google_analytics:   UA-20553038-2 # out your google-analytics code
 # Build settings
 markdown: kramdown
 #theme: jekyll-theme-clean-blog
-remote_theme: jekyll-theme-clean-blog
+remote_theme: StartBootstrap/startbootstrap-clean-blog-jekyll
+#remote_theme: jekyll-theme-clean-blog
+
 # Build settings
 paginate:          5
 paginate_path:     "/posts/page:num/"
