@@ -13,3 +13,6 @@ Local testing:
 or
 
 `bundle exec jekyll serve --drafts`
+
+
+Local dev running on ruby 2.6.0. After installing ruby, `bundle install`
