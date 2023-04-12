@@ -30,7 +30,7 @@ After all&hellip; a mechanic is a mechanic, right? So an engineer is an engineer
 You wouldn&rsquo;t trust your luxury car with just any mechanic, so why on Earth would you trust the people in control of your IP, your company&rsquo;s core competencies, and competitive
 advantage to a mediocre gaggle of keyboard jockeys with Nerf guns? Good Engineers are expensive. Get over it.
 
-## You aren&rsquo;t Google. Don&rsquo;t be a Poser</h2>
+## You aren&rsquo;t Google. 
 
 <img class="right" src="/img/nerf.jpg" width="320" height="320" title="image" alt="images">
 
@@ -38,19 +38,6 @@ Nerf guns and scooters are cool&hellip; for my 5 year-old. And if you try to lur
 
 Companies like Google offer toys, but they don&rsquo;t lead with them. They lead with what matters to me&hellip; my day-to-day world.
 Leave the cute toys as background props. They won&rsquo;t keep an employee around, and putting them in the fore-front makes you look like a desperate Google-wannabe.
-
-## Hide the Product Manager</h2>
-
-<img class="right" src="/img/what-is-a-product-manager.jpg" width="300" height="300" title="image" alt="images">
-
-This is a trend I&rsquo;ve seen over recent years. Many companies require engineers/architect to meet with the Product Manager that is assigned to their project
-during the interview process. Often, the PM has veto-power over the candidate.
-
-Bad idea. The PM is not looking for a strong engineer. Most PMs wouldn&rsquo;t know the difference between an engineer or a janitor.
-An ideal engineer for a PM is someone who agrees with his ideas &ndash; no questions asked.
-So if you&rsquo;re looking for, &ldquo;Yes, Master&rdquo;, Igor the Hunchback, keep the PM involved. If I happen to one day be the candidate, I hope you have Nerf guns in the interview rooms.
-
-<strong>Interview engineers using their peers, direct reports, and superiors.</strong>
 
 ## GitHub is the Interview Question
 
