@@ -8,7 +8,7 @@ author: "Roy Russo"
 categories: [Startups,Management]
 tags: [startups, software, management]
 image:
-    path: /img/matrix.jpg
+    path: /img/jira_status_changes_1.png
 ---
 
 More fun with JIRA data. ;-)
