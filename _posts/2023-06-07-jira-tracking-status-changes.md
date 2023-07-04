@@ -5,8 +5,8 @@ subtitle: "Are too many/few status changes an indicator of broken processes or b
 date: 2023-06-07
 background: "/img/matrix.jpg"
 author: "Roy Russo"
-categories: [Startups,Management]
-tags: [startups, software, management]
+categories: [Startups,Management,Agile,NitroIQ]
+tags: [startups, software, management,agile,nitroiq]
 image:
     path: /img/jira_status_changes_1.png
 ---

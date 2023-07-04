@@ -6,8 +6,8 @@ description: A Roadmap to Aligning DataScience and Engineering within a software
 date: 2023-04-10
 background: "/img/matrix.jpg"
 author: "Roy Russo"
-categories: [Startups,Management]
-tags: [startups, software, management]
+categories: [Startups,Management, Agile, NitroIQ]
+tags: [startups, software, management, agile, nitroiq]
 image:
     path: /img/matrix.jpg
 ---

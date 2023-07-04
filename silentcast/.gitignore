@@ -1,0 +1,16 @@
+*.tar
+*.tar.*
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+pkg/
+*~
+PKGBUILD
+silentcast.install
+scpkg/silentcast
+.directory
+*.swx
+*.py
+*.o
