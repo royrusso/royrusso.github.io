@@ -1,18 +1,39 @@
+# Website
 
-My personal blog.
- 
-http://www.royrusso.com
+This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
+## Configuration - Local
 
-Running on jekyll v3.x
+https://docusaurus.io/docs/installation
 
-Local testing:
+## Local Development
 
-`bundle exec jekyll serve`
+`yarn run start`
 
-or
+http://localhost:3000/
 
-`bundle exec jekyll serve --drafts`
+If you want to run on a different port:
 
+`yarn run start -- --port 3001`
 
-Local dev running on ruby 2.6.0. After installing ruby, `bundle install`
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+
+## Build Static Files for Deployment
+
+```
+$ yarn build
+```
+
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+### Deployment
+
+## Troubleshooting
+
+If you blow away your node_modules directory, you may need to reset things, so try this:
+
+```
+yarn
+
+yarn build
+```

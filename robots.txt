@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: 
-
-Sitemap: http://royrusso.github.io/sitemap.xml 
