@@ -19,6 +19,8 @@ meant to be a landmine map for startup employees and founders, of the most commo
 witnessed post-acquisition, in contrast to the talk I have, which was focused on what corporate leaders could do
 differently after a startup is acquired to help preserve and grow their investment.
 
+<!-- truncate -->
+
 ## The Delusion
 
 > "Captive Greece captured her rude conqueror" - _Horace_

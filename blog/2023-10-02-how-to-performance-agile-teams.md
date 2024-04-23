@@ -1,15 +1,10 @@
 ---
-layout: post
 title: "How To Spot Performance Issues in Agile Teams"
-subtitle: Using NitroIQ and JIRA to identify performance issues.
 description: Blog post on how to use NitroIQ and JIRA to identify performance issues.
 date: 2023-10-02
-background: "/img/sankey.png"
-author: "Roy Russo"
-categories: [Startups]
+authors: [royrusso]
 tags: [NitroIQ, Agile, Management]
-image:
-  path: /img/sankey.png
+image: "../img/sankey.png"
 ---
 
 ## Introduction
@@ -17,6 +12,8 @@ image:
 We've recently started adding new features to NitroIQ that help you identify performance issues in JIRA, and provide you with actionable insights to help you resolve them.
 
 To that end, we are adding an entirely new section of best-practices and help to the NitroIQ online documentation. The aim is to help team leaders identify performance issues in their teams and processes and provide them with prescriptive guidance, using their own data, on how to resolve them.
+
+<!-- truncate -->
 
 The first two articles in this series are:
 

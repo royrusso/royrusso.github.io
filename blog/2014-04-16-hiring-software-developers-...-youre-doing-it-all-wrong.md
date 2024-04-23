@@ -1,18 +1,21 @@
 ---
-layout: post
+slug: "hiring-software-developers-/.-youre-doing-it-all-wrong.html"
 title: "Hiring Software Developers... You're Doing It All Wrong"
 date: 2014-04-16
-background: "/img/sv.jpg"
-author: "Roy Russo"
-categories: [Hiring]
+authors: [royrusso]
+tags: [startups, software, management, hiring]
 ---
 
-    
+import Image1 from '../img/nerf.jpg';
+import Image2 from '../img/githublogo.png';
+import Image3 from '../img/yahoologo.png';
 
 Short blog post on some of the most common mistakes I&rsquo;ve experienced with the recruiting and hiring of top talent engineers. Although there are many articles written on how to
 attract and hire great talent, seldom is there word shared over the silly things companies do to shoot themselves in the foot during the hiring process.
 
 &ldquo;If you think it&rsquo;s expensive hiring great engineers to build your software, wait and see how expensive it gets with bad engineers.&rdquo;
+
+<!-- truncate -->
 
 # Who should read this
 
@@ -30,9 +33,11 @@ After all&hellip; a mechanic is a mechanic, right? So an engineer is an engineer
 You wouldn&rsquo;t trust your luxury car with just any mechanic, so why on Earth would you trust the people in control of your IP, your company&rsquo;s core competencies, and competitive
 advantage to a mediocre gaggle of keyboard jockeys with Nerf guns? Good Engineers are expensive. Get over it.
 
-## You aren&rsquo;t Google. 
+## You aren&rsquo;t Google.
 
-<img class="right" src="/img/nerf.jpg" width="320" height="320" title="image" alt="images">
+<p align="center">
+<img src={Image1} className="doc_image"/>
+</p>
 
 Nerf guns and scooters are cool&hellip; for my 5 year-old. And if you try to lure candidates with toys, you&rsquo;ll end up with an engineering team of&hellip; 5 year olds!
 
@@ -41,7 +46,9 @@ Leave the cute toys as background props. They won&rsquo;t keep an employee aroun
 
 ## GitHub is the Interview Question
 
-<img class="right" src="/img/githublogo.png" width="300" height="300" title="image" alt="images">
+<p align="center">
+<img src={Image2} className="doc_image"/>
+</p>
 
 Nothing makes you look dumber to me than getting me on an interview panel and asking me to code a Bubble Sort routine or some other algorithm you pulled from the April 1989 issue of
 Commodore 64 magazine. Not only is the question irrelevant to what an engineer would be doing within your company, but you&rsquo;re likely going to end up with a company of great sorters and
@@ -58,16 +65,17 @@ to ask questions from during the actual interview, ie. &ldquo;Why didn&rsquo;t y
 
 ## Don&rsquo;t be a Bozo
 
-<img class="right" src="/img/yahoologo.png" title="image" alt="images">
+<p align="center">
+<img src={Image3} className="doc_image"/>
+</p>
 
 I cannot stress how <strong>small</strong> Engineering circles are. Even in the largest of cities and tech hubs, we are all connected. We know who the power-players are in the
 community. We know who&rsquo;s a good engineer and who&rsquo;s bad. Likewise, we know the good companies from the bad.
 
-We gossip like teenage girls about the companies we work for.  Really. You can fear GlassDoor reviews all you want, but they&rsquo;re really
- graffiti boards for angry clowns with crayons.
+We gossip like teenage girls about the companies we work for. Really. You can fear GlassDoor reviews all you want, but they&rsquo;re really
+graffiti boards for angry clowns with crayons.
 
 The real story from your most prized employees and engineers, the people we respect as peers, is dished out among the tech meetups and conferences.
 In fact, every city has a list of places no engineer worth his salt would step foot in, because his peers have spoken ill of it.
 
 How you treat your candidates and current employees will shape your brand for years to come, thereby affecting the quality and cost of the talent you seek.
-
