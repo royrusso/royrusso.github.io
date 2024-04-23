@@ -102,6 +102,7 @@ const config = {
           //   label: "Tutorial",
           // },
           { to: "about", label: "About", position: "left" },
+          { to: "projects", label: "Projects", position: "left" },
           {
             href: "https://github.com/royrusso",
             label: "GitHub",

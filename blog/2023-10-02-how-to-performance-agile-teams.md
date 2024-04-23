@@ -3,7 +3,7 @@ title: "How To Spot Performance Issues in Agile Teams"
 description: Blog post on how to use NitroIQ and JIRA to identify performance issues.
 date: 2023-10-02
 authors: [royrusso]
-tags: [NitroIQ, Agile, Management]
+tags: [nitroiq, agile, management]
 image: "../img/sankey.png"
 ---
 
