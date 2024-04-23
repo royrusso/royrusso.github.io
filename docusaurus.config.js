@@ -80,14 +80,19 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
-      image: "img/docusaurus-social-card.jpg",
+      defaultMode: "dark",
+      colorMode: {
+        respectPrefersColorScheme: true,
+      },
+      disableSwitch: true,
+
+      //      image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "My Site",
-        logo: {
-          alt: "My Site Logo",
-          src: "img/logo.svg",
-        },
+        title: "Home",
+        // logo: {
+        //   alt: "My Site Logo",
+        //   src: "img/logo.svg",
+        // },
         items: [
           // commented out because we are not using docs
           // {
@@ -96,7 +101,7 @@ const config = {
           //   position: "left",
           //   label: "Tutorial",
           // },
-          { to: "/blog", label: "Blog", position: "left" },
+          { to: "about", label: "About", position: "left" },
           {
             href: "https://github.com/royrusso",
             label: "GitHub",

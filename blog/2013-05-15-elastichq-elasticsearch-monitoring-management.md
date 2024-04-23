@@ -1,4 +1,5 @@
 ---
+slug: elastichq-elasticsearch-monitoring-management.html
 title: ElasticHQ - ElasticSearch Monitoring & Management
 authors: [royrusso]
 tags: [elastichq, elasticsearch, monitoring, management]
