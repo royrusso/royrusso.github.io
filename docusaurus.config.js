@@ -87,7 +87,7 @@ const config = {
         respectPrefersColorScheme: true,
       },
       disableSwitch: true,
-
+      //
       //      image: "img/docusaurus-social-card.jpg",
       navbar: {
         title: "Home",
