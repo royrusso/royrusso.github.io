@@ -82,11 +82,12 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      defaultMode: "dark",
       colorMode: {
-        respectPrefersColorScheme: true,
+        defaultMode: "dark",
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
       },
-      disableSwitch: true,
+
       //
       //      image: "img/docusaurus-social-card.jpg",
       navbar: {
