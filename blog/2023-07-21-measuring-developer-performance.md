@@ -36,4 +36,4 @@ Having coded for decades in, and a lot of that in Agil environments, I specially
 <img src={Image3} className="doc_image"/>
 </p>
 
-Lastly, we've added a handy table that displays all of the issues an assignee has worked on in the selected sprints, along with the churn count for each issue. I've blogged about [churn count](jira-tracking-issue-churn.html) before, and being able to track high churn counts to specific Assigneed or Creators in Jira is an added benefit.
+Lastly, we've added a handy table that displays all of the issues an assignee has worked on in the selected sprints, along with the churn count for each issue.
