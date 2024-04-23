@@ -91,10 +91,10 @@ const config = {
       //      image: "img/docusaurus-social-card.jpg",
       navbar: {
         title: "Home",
-        // logo: {
-        //   alt: "My Site Logo",
-        //   src: "img/logo.svg",
-        // },
+        logo: {
+          alt: "",
+          src: "img/me.jpeg",
+        },
         items: [
           // commented out because we are not using docs
           // {
@@ -103,7 +103,7 @@ const config = {
           //   position: "left",
           //   label: "Tutorial",
           // },
-          // { to: "about", label: "About", position: "left" },
+          { to: "about", label: "About", position: "left" },
           // { to: "projects", label: "Projects", position: "left" },
           {
             href: "https://github.com/royrusso",

@@ -1,6 +1,8 @@
-# Website
+# My Blog
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This is my personal website and blog. It is a place where I can share my thoughts, ideas, and projects with the world.
+
+_This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator._
 
 ## Configuration - Local
 
@@ -20,20 +22,22 @@ This command starts a local development server and opens up a browser window. Mo
 
 ## Build Static Files for Deployment
 
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+`yarn build` generates static content into the `build` directory and can be served using any static contents hosting service.
 
 ### Deployment
 
+This site uses Github Actions to trigger deployment to Github Pages. The deployment script is located in `.github/workflows/deploy.yml`.
+
+Docs can be found [here](https://docusaurus.io/docs/deployment#deploying-to-github-pages).
+
 ## Troubleshooting
 
-If you blow away your node_modules directory, you may need to reset things, so try this:
+- If you blow away your node_modules directory, you may need to reset things, so try this:
 
-```
-yarn
+  ```
+  yarn
 
-yarn build
-```
+  yarn build
+  ```
+
+- On initial install, you will need to `yarn install` to generate the `yarn.lock` file.

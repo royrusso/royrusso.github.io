@@ -35,3 +35,22 @@
   align-items: center;
   justify-content: center;
 }
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.column {
+  flex-basis: calc(
+    33.33% - 20px
+  ); /* 33.33% width for each column with 20px spacing */
+  box-sizing: border-box;
+}
+
+.acquired {
+  font-size: small;
+  color: #577bdf;
+}
