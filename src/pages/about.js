@@ -61,7 +61,7 @@ export default function Hello() {
               <div class="column">Bluechip Financial</div>
               <div class="column">Chief Technology Officer</div>
               <div class="column">2019-2020</div>
-              <div class="column">Volation</div>
+              <div class="column">Volantio</div>
               <div class="column">Chief Technology Officer</div>
               <div class="column">2014-2019</div>
               <div class="column">
