@@ -33,6 +33,22 @@ export default function Hello() {
           </div>
           <div class="container">
             <div class="project-alt">
+              <h2>Qronos</h2>
+              <p>
+                Qronos is a self-hosted application for running and monitoring
+                scripts written in Javacript and Python. Write scripts that act
+                as APIs, scheduled tasks, webhooks, and more.
+              </p>
+              <p>
+                <a href="https://github.com/Saasassin/qronos" target="_blank">
+                  GitHub
+                </a>
+              </p>
+              <img src="https://img.shields.io/github/stars/Saasassin/qronos.svg?label=Github Stars"></img>
+              &nbsp;
+              <img src="https://img.shields.io/github/forks/Saasassin/qronos.svg?label=Github Forks"></img>
+            </div>
+            <div class="project-alt">
               <h2>Nitro IQ</h2>
               <p>
                 NitroIQ monitors, scores, and improves your Team's Sprint
