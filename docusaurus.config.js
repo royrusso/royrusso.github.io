@@ -125,7 +125,7 @@ const config = {
               },
               {
                 label: "LinkedIn",
-                href: "https://discordapp.com/invite/docusaurus",
+                href: "https://www.linkedin.com/in/royrusso/",
               },
             ],
           },
