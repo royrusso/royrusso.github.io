@@ -32,7 +32,7 @@ export default function Hello() {
             </p>
           </div>
           <div class="container">
-            <div class="project-alt">
+            {/* <div class="project-alt">
               <h2>Qronos</h2>
               <p>
                 Qronos is a self-hosted application for running and monitoring
@@ -47,7 +47,7 @@ export default function Hello() {
               <img src="https://img.shields.io/github/stars/Saasassin/qronos.svg?label=Github Stars"></img>
               &nbsp;
               <img src="https://img.shields.io/github/forks/Saasassin/qronos.svg?label=Github Forks"></img>
-            </div>
+            </div> */}
             <div class="project-alt">
               <h2>Nitro IQ</h2>
               <p>
