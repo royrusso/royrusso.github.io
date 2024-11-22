@@ -106,6 +106,12 @@ const config = {
           // },
           { to: "about", label: "About", position: "left" },
           { to: "projects", label: "Projects", position: "left" },
+          { to: "presentations", label: "Presentations", position: "left" },
+          {
+            href: "https://www.linkedin.com/in/royrusso/",
+            label: "LinkedIn",
+            position: "right",
+          },
           {
             href: "https://github.com/royrusso",
             label: "GitHub",

@@ -1,9 +1,9 @@
 import Layout from "@theme/Layout";
 import React from "react";
 
-export default function Hello() {
+export default function About() {
   return (
-    <Layout title="Hello" description="Hello React Page">
+    <Layout title="About" description="About Page">
       <div
         style={{
           display: "flex",
@@ -24,11 +24,11 @@ export default function Hello() {
           <div>
             <h1>Hello, I am Roy.</h1>
             <p>
-              An experienced software engineering executive with a passion for
-              technology and innovation. I have a proven track record of
-              delivering high-quality software solutions that meet business
-              needs. I have a strong background in software development,
-              architecture, and project management.
+              An experienced, hands-on, software engineering executive with a
+              passion for technology and innovation. I have a proven track
+              record of delivering high-quality software solutions that meet
+              business needs. I have a strong background in software
+              development, architecture, and product/project management.
             </p>
             <p>
               I am currently the Vice President of Engineering at{" "}

@@ -1,9 +1,9 @@
 import Layout from "@theme/Layout";
 import React from "react";
 
-export default function Hello() {
+export default function Projects() {
   return (
-    <Layout title="Hello" description="Hello React Page">
+    <Layout title="Projects" description="Projects Page">
       <div
         style={{
           display: "flex",
@@ -23,8 +23,8 @@ export default function Hello() {
           <div>
             <h1>Projects.</h1>
             <p>
-              Here are some of my most popular projects on GitHub. For a full
-              list, check out my{" "}
+              Here are some of my most popular projects on GitHub and elsewhere.
+              For a full list of coding projects, check out my{" "}
               <a href="https://github.com/royrusso" target="_blank">
                 GitHub Profile
               </a>
@@ -32,22 +32,22 @@ export default function Hello() {
             </p>
           </div>
           <div class="container">
-            {/* <div class="project-alt">
-              <h2>Qronos</h2>
+            <div class="project-alt">
+              <h2>Minerva</h2>
               <p>
-                Qronos is a self-hosted application for running and monitoring
-                scripts written in Javacript and Python. Write scripts that act
-                as APIs, scheduled tasks, webhooks, and more.
+                A FAST network scanner and UI that identifies CVEs (Common
+                Vulnerabilities and Exposures) in your network and alerts you to
+                new ones as they arise.
               </p>
               <p>
-                <a href="https://github.com/Saasassin/qronos" target="_blank">
+                <a href="https://github.com/royrusso/minerva" target="_blank">
                   GitHub
                 </a>
               </p>
-              <img src="https://img.shields.io/github/stars/Saasassin/qronos.svg?label=Github Stars"></img>
+              <img src="https://img.shields.io/github/stars/royrusso/minerva.svg?label=Github Stars"></img>
               &nbsp;
-              <img src="https://img.shields.io/github/forks/Saasassin/qronos.svg?label=Github Forks"></img>
-            </div> */}
+              <img src="https://img.shields.io/github/forks/royrusso/minerva.svg?label=Github Forks"></img>
+            </div>
             <div class="project-alt">
               <h2>Nitro IQ</h2>
               <p>
