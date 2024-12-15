@@ -33,20 +33,20 @@ export default function Projects() {
           </div>
           <div class="container">
             <div class="project-alt">
-              <h2>Minerva</h2>
+              <h2>Probus</h2>
               <p>
-                A FAST network scanner and UI that identifies CVEs (Common
-                Vulnerabilities and Exposures) in your network and alerts you to
-                new ones as they arise.
+                A FAST network monitor and UI that actively scans and alerts you
+                to network changes, new devices, open ports, and identifies CVEs
+                (Common Vulnerabilities and Exposures).
               </p>
               <p>
-                <a href="https://github.com/royrusso/minerva" target="_blank">
+                <a href="https://github.com/royrusso/probus" target="_blank">
                   GitHub
                 </a>
               </p>
-              <img src="https://img.shields.io/github/stars/royrusso/minerva.svg?label=Github Stars"></img>
+              <img src="https://img.shields.io/github/stars/royrusso/probus.svg?label=Github Stars"></img>
               &nbsp;
-              <img src="https://img.shields.io/github/forks/royrusso/minerva.svg?label=Github Forks"></img>
+              <img src="https://img.shields.io/github/forks/royrusso/probus.svg?label=Github Forks"></img>
             </div>
             <div class="project-alt">
               <h2>Nitro IQ</h2>
