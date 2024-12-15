@@ -1,6 +1,6 @@
 # My Blog
 
-This is my personal website and blog. It is a place where I can share my thoughts, ideas, and projects with the world.
+This is my [personal website and blog](https://www.royrusso.com/). It is a place where I can share my thoughts, ideas, and projects with the world.
 
 _This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator._
 
