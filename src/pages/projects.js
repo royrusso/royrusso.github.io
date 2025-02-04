@@ -32,7 +32,7 @@ export default function Projects() {
             </p>
           </div>
           <div class="container">
-            <div class="project-alt">
+            {/* <div class="project-alt">
               <h2>Probus</h2>
               <p>
                 A FAST network monitor and UI that actively scans and alerts you
@@ -47,7 +47,7 @@ export default function Projects() {
               <img src="https://img.shields.io/github/stars/royrusso/probus.svg?label=Github Stars"></img>
               &nbsp;
               <img src="https://img.shields.io/github/forks/royrusso/probus.svg?label=Github Forks"></img>
-            </div>
+            </div> */}
             <div class="project-alt">
               <h2>Nitro IQ</h2>
               <p>
