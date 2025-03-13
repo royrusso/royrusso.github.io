@@ -7,7 +7,7 @@
 import { themes as prismThemes } from "prism-react-renderer";
 
 module.exports = {
-  title: "Roy Russo - Blog",
+  title: "Roy Russo",
   tagline: "Roy Russo - Blog and Site",
   favicon: "img/favicon.ico",
 
@@ -51,7 +51,7 @@ module.exports = {
         //    "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         //},
         blog: {
-          routeBasePath: "/", // Serve the blog at the site's root
+          //routeBasePath: "/", // Serve the blog at the site's root
           showReadingTime: true,
           blogSidebarTitle: "Recent Posts",
           blogSidebarCount: 20,
@@ -104,7 +104,8 @@ module.exports = {
           //   position: "left",
           //   label: "Tutorial",
           // },
-          { to: "about", label: "About", position: "left" },
+          // { to: "about", label: "About", position: "left" },
+          { to: "blog", label: "Blog", position: "left" },
           { to: "projects", label: "Projects", position: "left" },
           { to: "presentations", label: "Presentations", position: "left" },
           {
