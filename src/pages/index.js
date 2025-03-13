@@ -1,9 +1,9 @@
 import Layout from "@theme/Layout";
 import React from "react";
 
-export default function About() {
+export default function Home() {
   return (
-    <Layout title="About" description="About Page">
+    <Layout title="Home" description="Home Page">
       <div
         style={{
           display: "flex",
