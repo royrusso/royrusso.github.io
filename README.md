@@ -10,6 +10,8 @@ https://docusaurus.io/docs/installation
 
 ## Local Development
 
+!! Initial install will require `yarn install` to generate the `yarn.lock` file. !!
+
 `yarn run start`
 
 http://localhost:3000/

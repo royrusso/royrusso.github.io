@@ -1,5 +1,4 @@
 import Layout from "@theme/Layout";
-import React from "react";
 
 export default function Home() {
   return (
@@ -54,7 +53,10 @@ export default function Home() {
               <div class="column">
                 <h3>Position</h3>
               </div>
-              <div class="column">2024-</div>
+              <div class="column">2025-</div>
+              <div class="column">Momnt Technologies</div>
+              <div class="column">Chief Technology Officer</div>
+              <div class="column">2024-2025</div>
               <div class="column">Verusen</div>
               <div class="column">VP of Engineering</div>
               <div class="column">2020-2023</div>
